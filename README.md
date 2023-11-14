@@ -1,4 +1,4 @@
-# Documentation example
+# INTEGRATE Documentation
 
-We use this example in the lesson
-[How to document your research software](https://coderefinery.github.io/documentation/).
+Hosted on Github Pages --> 
+[https://cultpenguin.github.io/integrate/](https://cultpenguin.github.io/integrate/).
