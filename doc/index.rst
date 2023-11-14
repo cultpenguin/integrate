@@ -30,55 +30,54 @@ Analysis
 
 Source Code
 ===========
+.. The latest stable code can be downloaded from
+   http://cultpenguin.github.io/integrate/.
 
-The latest stable code can be downloaded from
-http://cultpenguin.github.io/integrate/.
-
-The current development version is available through GitHub at
-https://github.com/cultpenguin/integrate.
-
-
-Prerequisites
-=============
+   The current development version is available through GitHub at
+   https://github.com/cultpenguin/integrate.
 
 
-
-The following packages are required using Python to run INTEGRATE:
-
-::
-
-      pip install numpy scipy matplotlib jupyterlab h5py tqdm 
-
-If you want to edit and compile documentation the following packages are required:
-
-::
-
-      pip install sphinx nbsphinx sphinx_rtd_theme
-
-
-The following packages are required using MATLAB to run INTEGRATE:
-
-::
-
-      https://github.com/cultpenguin/sippi
-      https://github.com/cultpenguin/mgstat
-      https://github.com/cultpenguin/sippi-abc
+   Prerequisites
+   =============
 
 
 
-License (LGPL)
-==============
+   The following packages are required using Python to run INTEGRATE:
 
-This library is free software; you can redistribute it and/or modify it
-under the terms of the GNU Lesser General Public License as published by
-the Free Software Foundation; either version 2.1 of the License, or (at
-your option) any later version. This program is distributed in the hope
-that it will be useful, but WITHOUT ANY WARRANTY; without even the
-implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for more details. You should
-have received a copy of the GNU Lesser General Public License along with
-this program; if not, write to the Free Software Foundation, Inc., 59
-Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+   ::
+
+         pip install numpy scipy matplotlib jupyterlab h5py tqdm 
+
+   If you want to edit and compile documentation the following packages are required:
+
+   ::
+
+         pip install sphinx nbsphinx sphinx_rtd_theme
+
+
+   The following packages are required using MATLAB to run INTEGRATE:
+
+   ::
+
+         https://github.com/cultpenguin/sippi
+         https://github.com/cultpenguin/mgstat
+         https://github.com/cultpenguin/sippi-abc
+
+
+
+   License (LGPL)
+   ==============
+
+   This library is free software; you can redistribute it and/or modify it
+   under the terms of the GNU Lesser General Public License as published by
+   the Free Software Foundation; either version 2.1 of the License, or (at
+   your option) any later version. This program is distributed in the hope
+   that it will be useful, but WITHOUT ANY WARRANTY; without even the
+   implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+   See the GNU Lesser General Public License for more details. You should
+   have received a copy of the GNU Lesser General Public License along with
+   this program; if not, write to the Free Software Foundation, Inc., 59
+   Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 The manual
 ----------
@@ -86,7 +85,8 @@ The manual
 .. toctree::
    :maxdepth: 3
 	      
-   algorithms      
+..   algorithms      
+   
    format
    contributions
    references
