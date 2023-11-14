@@ -28,8 +28,9 @@ Analysis
    Further a more advanced tool will be developed that will allow computing and visualizing, in principle, the posterior probability of any feature of the prior model.
 
 
-Source Code
-===========
+
+.. Source Code
+   ===========
 .. The latest stable code can be downloaded from
    http://cultpenguin.github.io/integrate/.
 
