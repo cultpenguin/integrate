@@ -5,7 +5,6 @@ Matlab Algorithms
 integrate_rejection.m
 ---------------------
 
-
 integrate_update_prior_attributes.m
 -----------------------------------
 

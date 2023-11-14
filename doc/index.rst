@@ -85,8 +85,7 @@ The manual
 .. toctree::
    :maxdepth: 3
 	      
-..   algorithms      
-   
+   algorithms      
    format
    contributions
    references
