@@ -6,6 +6,7 @@
 
 INTEGRATE: Fast Probabilistic inversion of EM data using informed prior models
 ------------------------------------------------------------------------------
+Last updated: |today|.
 
 The primary objective of INTEGRATE is to facilitate quantitative decision-making related to the exploration and exploitation of raw materials in Denmark.
 
@@ -29,34 +30,15 @@ Analysis
 
 
 
-.. Source Code
-   ===========
-.. The latest stable code can be downloaded from
-   http://cultpenguin.github.io/integrate/.
+Source Code
+===========
 
    The current development version is available through GitHub at
-   https://github.com/cultpenguin/integrate.
+   https://github.com/cultpenguin/integrate_mockup/.
 
-
-Prerequisites
-=============
-
-
-
-The following packages are required using Python to run INTEGRATE:
-
-::
-
-      pip install numpy scipy matplotlib jupyterlab h5py tqdm 
-
-
-The following packages are required using MATLAB to run INTEGRATE:
-
-::
-
-      https://github.com/cultpenguin/sippi
-      https://github.com/cultpenguin/mgstat
-      https://github.com/cultpenguin/sippi-abc
+.. 
+   The latest stable code can be downloaded from
+   http://cultpenguin.github.io/integrate/.
 
 
 
@@ -80,6 +62,7 @@ The manual
 .. toctree::
    :maxdepth: 3
 	      
+   install
    algorithms      
    format
    contributions
