@@ -1,2 +1,4 @@
+sphinx
 nbshpinx
 sphinx-gallery
+pandoc
