@@ -17,7 +17,13 @@ version = '0.21'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser']
+#extensions = ['myst_parser']
+#extensions = ['nbsphinx']
+#extensions = ['myst_nb']
+extensions = [
+    "nbsphinx",
+    "sphinx_gallery.load_style",
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md']

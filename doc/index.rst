@@ -65,6 +65,9 @@ The manual
    install
    algorithms      
    format
+   notebooks
    contributions
    references
+ 
+
    
