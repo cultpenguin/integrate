@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data format &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks" href="notebooks.html" />
+    <link rel="prev" title="Julia Algorithms" href="algorithms/algJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+              <div class="version">
+                0.22
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-h5">DATA.h5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prior">PRIOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forward-h5">FORWARD.h5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aarhusinv"><span>[AarhusInv]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ga-aem"><span>[GA-AEM]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simpeg"><span>[SimPEG]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#post-f-post-h5">POST - <code class="samp docutils literal notranslate"><span class="pre">f_post_h5</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#continious-parameters">Continious parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discrete-parameters">Discrete parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#a-typical-workflow">A typical workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/format.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-format">
+<h1>Data format<a class="headerlink" href="#data-format" title="Link to this heading"></a></h1>
+<p>The <a class="reference external" href="https://www.hdfgroup.org/solutions/hdf5/">HDF5</a> file format is used as a container for all data in INTEGRATE.
+Each HDF5 file can contain multiple data sets (typically arranged in matrix format) with associated attributes that describe the data. <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDF View</a> is usefull to inspect the content of HDF5 files.</p>
+<p>The following HDF files are used for any INTEGRATE project</p>
+<p><strong>DATA.h5</strong> : Stores observed data, and its associated geometry.</p>
+<p><strong>PRIOR.h5</strong>: Stores realizations of the prior model, and corresponding forward response</p>
+<p><strong>FORWARD.h5</strong>: Stores information need to solved the forward, problem, and/or needed to describe the observed data in DATA.h5</p>
+<p><strong>POST.h5</strong>: stores index of posterior realizations, as well as posterior statistics</p>
+<section id="data-h5">
+<h2>DATA.h5<a class="headerlink" href="#data-h5" title="Link to this heading"></a></h2>
+<p>Ns: Number of soundings</p>
+<p>Nd: Number of data points per sounding</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Data and features om DATA.h5</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/d_obs</p></td>
+<td><p>[Ns,Nd]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Observed data (db/dT)</p></td>
+</tr>
+<tr class="row-odd"><td><p>/d_std</p></td>
+<td><p>[Ns,Nd]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Standard deviation of observed data (db/dT). Is the size is [1,Nd], the same <code class="docutils literal notranslate"><span class="pre">d_std</span></code> is used for all data.</p></td>
+</tr>
+<tr class="row-even"><td><p>/Ct</p></td>
+<td><p>[Nd,Nd]</p></td>
+<td></td>
+<td></td>
+<td><p>Correlated noise matrix. <code class="docutils literal notranslate"><span class="pre">Ct</span></code> is the same for all data</p></td>
+</tr>
+<tr class="row-odd"><td><p>/Ct</p></td>
+<td><p>[Ns,Nd,Nd]</p></td>
+<td></td>
+<td></td>
+<td><p>Correlated noise matrix; each data observation has its own correlated noise matrix</p></td>
+</tr>
+<tr class="row-even"><td><p>/UTMX</p></td>
+<td><p>[Nd,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>X - location of data points</p></td>
+</tr>
+<tr class="row-odd"><td><p>/UTMY</p></td>
+<td><p>[Nd,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Y - location of data points</p></td>
+</tr>
+<tr class="row-even"><td><p>/ELEVATION</p></td>
+<td><p>[Nd,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Elevation at data points</p></td>
+</tr>
+<tr class="row-odd"><td><p>/LINE</p></td>
+<td><p>[Nd,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Linenumber at data points</p></td>
+</tr>
+<tr class="row-even"><td><p>/gatetimes</p></td>
+<td><p>[Ndata,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Gate times (in seconds) for each data point</p></td>
+</tr>
+<tr class="row-odd"><td><p>/i_lm</p></td>
+<td><p>[Nlm,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Index (rel to /gatetimes) of Nlm gates for the low moment.</p></td>
+</tr>
+<tr class="row-even"><td><p>/i_hm</p></td>
+<td><p>[Nhm,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Index (rel to /gatetimes) of Nhm gates for the high moment.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="prior">
+<h2>PRIOR<a class="headerlink" href="#prior" title="Link to this heading"></a></h2>
+<p>PRIOR.h5 contains <code class="docutils literal notranslate"><span class="pre">N</span></code> realizations of a prior model (represented as potentially multiple types of model parameters, such as resistivity, lithology, grainsize,….), and corresponding data (consisting of potentially multiple types of data, such as tTEM, SkyTEM, WellData,..)</p>
+<p><code class="docutils literal notranslate"><span class="pre">N</span></code>: Number of realizations of the prior model</p>
+<p><code class="docutils literal notranslate"><span class="pre">Nm1</span></code>: Number of model parameters of type 1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Nm2</span></code>: Number of model parameters of type 2</p>
+<p><code class="docutils literal notranslate"><span class="pre">NmX</span></code>: Number of model parameters of type X</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">PRIOR model realizations in PRIOR.h5</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/M1</p></td>
+<td><p>[N,Nm1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>N realizations of model parameter 1,
+each consisting of Nm1 model parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/z</p></td>
+<td><p>[nm]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Array of z values (top of layer) for M1</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/is_discrete</p></td>
+<td><p>[nm]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>[0/1] described whether /M1 is a discrete or continuous parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/class_id</p></td>
+<td><p>[1,n_class]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>A list of  <code class="docutils literal notranslate"><span class="pre">n_class</span></code> class id; only when case /M1/is_discrete=1.</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/class_name</p></td>
+<td><p>[1,n_class]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>A list of <code class="docutils literal notranslate"><span class="pre">n_class</span></code> strings describing each class; only when case /M1/is_discrete=1.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/clim</p></td>
+<td><p>[1,2]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Min and maximum value for colorbar</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/cmap</p></td>
+<td><p>[3,nlev]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Colormap with <code class="docutils literal notranslate"><span class="pre">nlev</span></code> levels.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M2</p></td>
+<td><p>[N,Nm2]</p></td>
+<td></td>
+<td></td>
+<td><p>N realizations of model parameter 2,
+each consisting of Nm2 model parameters</p></td>
+</tr>
+<tr class="row-even"><td><p>/Mx</p></td>
+<td><p>[N,NmX]</p></td>
+<td></td>
+<td></td>
+<td><p>N realizations of model parameter X,
+each consisting of NmX model parameters</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">posterior data realizations in PRIOR.h5</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/D1</p></td>
+<td><p>[N,Nd1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>N realizations of data number 1,
+each consisting of <code class="docutils literal notranslate"><span class="pre">Nd</span></code> model parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D1/with_noise</p></td>
+<td><p>[1]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Indicates whether noise was added to the data[1] or not[0].</p></td>
+</tr>
+<tr class="row-even"><td><p>/D2</p></td>
+<td><p>[N,Nd2]</p></td>
+<td></td>
+<td></td>
+<td><p>N realizations of data number 2,
+each consisting of <code class="docutils literal notranslate"><span class="pre">Nd2</span></code> model parameters</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">/D1</span></code> is only mandatory when PRIOR.h5 is used for inversion</p>
+<p>All the mandatory features specified for <code class="docutils literal notranslate"><span class="pre">/M1</span></code> are also mandatory for other features, i.e.  <code class="docutils literal notranslate"><span class="pre">/M1</span></code>,  <code class="docutils literal notranslate"><span class="pre">/M2</span></code>, … .</p>
+<p>f_forward_h5 [string]: Defines the name of the HDF5 file that contains information need to solved the forward problem…</p>
+</section>
+<section id="forward-h5">
+<h2>FORWARD.h5<a class="headerlink" href="#forward-h5" title="Link to this heading"></a></h2>
+<p>The FORWARD.h5 needs to hold’ as much information as needed to define the use fo a specific forward</p>
+<p><code class="docutils literal notranslate"><span class="pre">/method</span></code> must point to a valid forward method, i.e. <code class="docutils literal notranslate"><span class="pre">/method</span></code> must be one of the following strings</p>
+<section id="aarhusinv">
+<h3><a class="reference internal" href="references.html#aarhusinv" id="id1"><span>[AarhusInv]</span></a><a class="headerlink" href="#aarhusinv" title="Link to this heading"></a></h3>
+<p>Not yet implemented</p>
+</section>
+<section id="ga-aem">
+<h3><a class="reference internal" href="references.html#ga-aem" id="id2"><span>[GA-AEM]</span></a><a class="headerlink" href="#ga-aem" title="Link to this heading"></a></h3>
+<p>Not yet implemented</p>
+</section>
+<section id="simpeg">
+<h3><a class="reference internal" href="references.html#simpeg" id="id3"><span>[SimPEG]</span></a><a class="headerlink" href="#simpeg" title="Link to this heading"></a></h3>
+<p>Not yet implemented</p>
+</section>
+</section>
+<section id="post-f-post-h5">
+<h2>POST - <code class="samp docutils literal notranslate"><span class="pre">f_post_h5</span></code><a class="headerlink" href="#post-f-post-h5" title="Link to this heading"></a></h2>
+<p>At the very minimim POST.h5 needs to conatin the index (in PRIOR.h5) of realizations from the posterior</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Data and features in POST.h5</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/i_use</p></td>
+<td><p>[N,Nr]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Index of posterior realizations for each data</p></td>
+</tr>
+<tr class="row-odd"><td><p>/T</p></td>
+<td><p>[N,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>The annealing temperature used for inversion</p></td>
+</tr>
+<tr class="row-even"><td><p>/EV</p></td>
+<td><p>[N,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Evidence</p></td>
+</tr>
+<tr class="row-odd"><td><p>/f5_data</p></td>
+<td><p>F [string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Filename of HDF5 data file.</p></td>
+</tr>
+<tr class="row-even"><td><p>/f5_prior</p></td>
+<td><p>F [string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Filename of HDF5 PRIOR file.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="continious-parameters">
+<h3>Continious parameters<a class="headerlink" href="#continious-parameters" title="Link to this heading"></a></h3>
+<p>For continuous model parameters the follwing generic posterior statistics are computed</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Data and features for continuous parameters in POST.h5</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/M1/Mean</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Pointwise mean of the posterior</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/Median</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Poinwise median of the posterior</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/Std</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Pointwise standard deviation of the posterior</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="discrete-parameters">
+<h3>Discrete parameters<a class="headerlink" href="#discrete-parameters" title="Link to this heading"></a></h3>
+<p>For continuous model parameters the following generic posterior statistics are computed</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Data and features for discrete parameters in POST.h5</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/M1/Mode</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Pointwise mode of the posterior</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/Entropy</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Poinwise entropy of the posterior</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/P</p></td>
+<td><p>[N,Nm,Nclass]</p></td>
+<td></td>
+<td></td>
+<td><p>Pointwise posterior probability of each class.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="a-typical-workflow">
+<h2>A typical workflow<a class="headerlink" href="#a-typical-workflow" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Setup DATA.h5</p>
+<ul class="simple">
+<li><p>Store the observed data and its associated uncertainty in DATA.h5</p></li>
+</ul>
+</li>
+<li><p>Setup FORWARD.h5</p>
+<ul class="simple">
+<li><p>Define the forward problem in FORWARD.h5.</p></li>
+</ul>
+</li>
+<li><p>Setup PRIOR.h5</p>
+<ul class="simple">
+<li><p>Generate prior model realizations are store in /M1</p></li>
+<li><p>Use FORWARD.h5 to compute the forward response of the prior realizations.</p></li>
+</ul>
+</li>
+<li><p>Sample the posterior and output POST.h5</p></li>
+<li><p>Update POST.h5 with some statistics computed from the posterior.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="algorithms/algJulia.html" class="btn btn-neutral float-left" title="Julia Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notebooks.html" class="btn btn-neutral float-right" title="Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, INTEGRATE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
