@@ -12,7 +12,7 @@ copyright = '2023, INTEGRATE'
 author = 'INTEGRATE WORKING GROUP'
 
 # The short X.Y version
-version = '0.21'
+version = '0.22'
 # The full version, including alpha/beta/rc tags
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
