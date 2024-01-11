@@ -22,11 +22,14 @@ The following HDF files are used for any INTEGRATE project
 
 DATA.h5
 =======
-
-Ns: Number of soundings
-
-Nd: Number of data points per sounding
-
+DATA.h5 contains observed data, and its associated geometry. 
+The observed data can be of many types, such as TEM data and well-log data
+  
+  ``Ns``: Number of soundings
+  
+  ``Nd``: Number of data points per sounding
+  
+  ``Nclass``: Number of classes
 
 .. list-table:: Data and features om DATA.h5
    :widths: 10 10 5 5 70 
@@ -37,26 +40,51 @@ Nd: Number of data points per sounding
      - Feature
      - Mandatory
      - Description
-   * - /d_obs
+   * - /D1/noise_model
+     - [string]
+     - *
+     - *
+     - A string describing the noise model used for the data. Here ``'gaussian'``
+   * - /D1/d_obs
      - [Ns,Nd]
      - 
      - *
-     - Observed data (db/dT)
-   * - /d_std
+     - Observed data (#1)
+   * - /D1/d_std
      - [Ns,Nd]
      - 
      - *
      - Standard deviation of observed data (db/dT). Is the size is [1,Nd], the same ``d_std`` is used for all data.
-   * - /Ct
+   * - /D1/Ct
      - [Nd,Nd]
      - 
      - 
      - Correlated noise matrix. ``Ct`` is the same for all data
-   * - /Ct
+   * - /D1/Ct
      - [Ns,Nd,Nd]
      - 
      - 
      - Correlated noise matrix; each data observation has its own correlated noise matrix 
+   * - /D2/noise_model
+     - [string]
+     - *
+     - *
+     - A string describing the noise model used for the data. Here ``'class_probability'``
+   * - /D2/d_obs
+     - [Nc,Nclass,Nm]
+     - 
+     - 
+     - Observed data (class probabilities)
+   * - /D2/i_group
+     - [Nd]
+     - 
+     - 
+     - 
+   * - /D2/i_use
+     - [Nd,Nd]
+     - 
+     - 
+     - Correlated noise matrix. ``Ct`` is the same for all data
    * - /UTMX
      - [Nd,1]
      - 
