@@ -170,7 +170,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
 
 
 
-.. list-table:: posterior data realizations in PRIOR.h5
+.. list-table:: prior data realizations in PRIOR.h5
    :widths: 10 10 5 5 70 
    :header-rows: 1
 
@@ -185,6 +185,11 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
      - *
      - N realizations of data number 1, 
        each consisting of ``Nd`` model parameters
+   * - /D1/f5_forward
+     - [string]
+     - *
+     - 
+     - HDF file describing the forward model used to compute prior data.
    * - /D1/with_noise
      - [1]
      - *
@@ -209,23 +214,58 @@ f_forward_h5 [string]: Defines the name of the HDF5 file that contains informati
 
 FORWARD.h5
 ==========
-The FORWARD.h5 needs to hold' as much information as needed to define the use fo a specific forward
+The FORWARD.h5 needs to hold' as much information as needed to define the use fo a specific forward model.
 
-``/method`` must point to a valid forward method, i.e. ``/method`` must be one of the following strings
+The attribute ``/method`` refer to a specific choice of forward method.
 
-[AarhusInv]_
-------------
+
+.. list-table:: posterior data realizations in PRIOR.h5
+   :widths: 10 10 5 5 70 
+   :header-rows: 1
+
+   * - Dataset
+     - Format
+     - Feature
+     - Mandatory
+     - Description
+   * - /method
+     - [string]
+     - *
+     - 
+     - Defines the type of forward model def:'TDEM'.
+   * - /type
+     - [string]
+     - *
+     - 
+     - Define the algorithm used to solve the forward model. def:'GA-AEM'.
+     
+
+``/method`` can, for example, be ``tdem`` for Time Domain EM (YThe default in INTEGRATRE)
+
+TDEM: Time domain EM, method='tdem'.
+------------------------------------
+
+``/method='TDEM'`` make use of time-domain EM forward modeling. 
+The following three types of forward models will (eventally) be available:
+
+
+``/type='GA-AEM'`` [DEFAULT].
+[GA-AEM]_. Avilable for both Linux and Windows, Matlab and Python.
+
+
+``/type='AarhusInv'``.
+[AarhusInv]_. Windows only.
 Not yet implemented
 
-[GA-AEM]_
----------
-Not yet implemented
 
-[SimPEG]_
----------
-Not yet implemented
+``/type='SimPEG'``.
+[SimPEG]_. Python only.
 
+LOG: Well log conditioning, method='log'
+----------------------------------------
 
+``/method='log'`` maps features of a specific model (a realizations of the prior) directly into data. 
+Not yet implemented.
   
 
 POST - :samp:`f_post_h5`
