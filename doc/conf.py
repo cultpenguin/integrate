@@ -8,11 +8,11 @@
 
 
 project = 'INTEGRATE'
-copyright = '2023, INTEGRATE'
+copyright = '2023,2024 INTEGRATE WORKING GROUP'
 author = 'INTEGRATE WORKING GROUP'
 
 # The short X.Y version
-version = '0.22'
+version = '0.23'
 # The full version, including alpha/beta/rc tags
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

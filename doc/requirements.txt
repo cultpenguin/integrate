@@ -1,4 +1,6 @@
 sphinx
-nbshpinx
+nbsphinx
 sphinx-gallery
 pandoc
+myst_parser
+sphinx_rtd_theme
