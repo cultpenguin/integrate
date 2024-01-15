@@ -163,7 +163,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
      - *
      - N realizations of model parameter 1, 
        each consisting of Nm1 model parameters
-   * - /M1/z
+   * - /M1/x
      - [nm]
      - *
      - *
