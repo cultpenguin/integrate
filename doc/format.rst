@@ -22,11 +22,14 @@ The following HDF files are used for any INTEGRATE project
 
 DATA.h5
 =======
-
-Ns: Number of soundings
-
-Nd: Number of data points per sounding
-
+DATA.h5 contains observed data, and its associated geometry. 
+The observed data can be of many types, such as TEM data and well-log data
+  
+  ``Np``: Number of data points (on per location).
+  
+  ``Ndi``: Number of data points ``Nd`` per data type ``i``per location.
+  
+  ``Nclass``: Number of classes
 
 .. list-table:: Data and features om DATA.h5
    :widths: 10 10 5 5 70 
@@ -37,47 +40,57 @@ Nd: Number of data points per sounding
      - Feature
      - Mandatory
      - Description
-   * - /d_obs
-     - [Ns,Nd]
-     - 
-     - *
-     - Observed data (db/dT)
-   * - /d_std
-     - [Ns,Nd]
-     - 
-     - *
-     - Standard deviation of observed data (db/dT). Is the size is [1,Nd], the same ``d_std`` is used for all data.
-   * - /Ct
-     - [Nd,Nd]
-     - 
-     - 
-     - Correlated noise matrix. ``Ct`` is the same for all data
-   * - /Ct
-     - [Ns,Nd,Nd]
-     - 
-     - 
-     - Correlated noise matrix; each data observation has its own correlated noise matrix 
    * - /UTMX
-     - [Nd,1]
+     - [Np,1]
      - 
      - *
      - X - location of data points
 
    * - /UTMY
-     - [Nd,1]
+     - [Np,1]
      - 
      - *
      - Y - location of data points    
    * - /ELEVATION
-     - [Nd,1]
+     - [Np,1]
      - 
      - *
      - Elevation at data points    
    * - /LINE
-     - [Nd,1]
+     - [Np,1]
      - 
      - *
      - Linenumber at data points    
+   * - --
+     - 
+     - 
+     - 
+     - 
+   * - /D1/noise_model
+     - [string]
+     - *
+     - *
+     - A string describing the noise model used for the data. Here ``'gaussian'`` to represent a multivariate Gaussian noise model.
+   * - /D1/d_obs
+     - [Np,Nd1]
+     - 
+     - *
+     - Observed data (#1)
+   * - /D1/d_std
+     - [Np,Nd1]
+     - 
+     - *
+     - Standard deviation of observed data (db/dT). Is the size is [1,Nd], the same ``d_std`` is used for all data.
+   * - /D1/Ct
+     - [Nd1,Nd1]
+     - 
+     - 
+     - Correlated noise matrix. ``Ct`` is the same for all data
+   * - /D1/Ct
+     - [Np,Nd1,Nd1]
+     - 
+     - 
+     - Correlated noise matrix; each data observation has its own correlated noise matrix 
    * - /gatetimes
      - [Ndata,1]
      - 
@@ -93,6 +106,31 @@ Nd: Number of data points per sounding
      - 
      - 
      - Index (rel to /gatetimes) of Nhm gates for the high moment. 
+   * - --
+     - 
+     - 
+     - 
+     - 
+   * - /D2/noise_model
+     - [string]
+     - *
+     - *
+     - A string describing the noise model used for the data. Here ``'class_probability_group'``
+   * - /D2/d_obs
+     - [Np,Nclass,Nd2]
+     - 
+     - 
+     - Observed data (class probabilities)
+   * - /D2/i_group
+     - [Np,1]
+     - 
+     - 
+     - Indicates whether the Nd2 data should considered as groups or individually
+   * - /D2/i_use
+     - [Nd,Nd]
+     - 
+     - 
+     - Binary indicator of whether a data point should be used or not
 
 
 
@@ -125,7 +163,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
      - *
      - N realizations of model parameter 1, 
        each consisting of Nm1 model parameters
-   * - /M1/z
+   * - /M1/x
      - [nm]
      - *
      - *
@@ -170,7 +208,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
 
 
 
-.. list-table:: posterior data realizations in PRIOR.h5
+.. list-table:: prior data realizations in PRIOR.h5
    :widths: 10 10 5 5 70 
    :header-rows: 1
 
@@ -185,6 +223,11 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
      - *
      - N realizations of data number 1, 
        each consisting of ``Nd`` model parameters
+   * - /D1/f5_forward
+     - [string]
+     - *
+     - 
+     - HDF file describing the forward model used to compute prior data.
    * - /D1/with_noise
      - [1]
      - *
@@ -209,29 +252,64 @@ f_forward_h5 [string]: Defines the name of the HDF5 file that contains informati
 
 FORWARD.h5
 ==========
-The FORWARD.h5 needs to hold' as much information as needed to define the use fo a specific forward
+The FORWARD.h5 needs to hold' as much information as needed to define the use fo a specific forward model.
 
-``/method`` must point to a valid forward method, i.e. ``/method`` must be one of the following strings
+The attribute ``/method`` refer to a specific choice of forward method.
 
-[AarhusInv]_
-------------
+
+.. list-table:: posterior data realizations in PRIOR.h5
+   :widths: 10 10 5 5 70 
+   :header-rows: 1
+
+   * - Dataset
+     - Format
+     - Feature
+     - Mandatory
+     - Description
+   * - /method
+     - [string]
+     - *
+     - 
+     - Defines the type of forward model def:'TDEM'.
+   * - /type
+     - [string]
+     - *
+     - 
+     - Define the algorithm used to solve the forward model. def:'GA-AEM'.
+     
+
+``/method`` can, for example, be ``TDEM`` for Time Domain EM (The default in INTEGRATE),
+ot can be ``identity`` for an identity mapping (useful to represent log data).
+
+TDEM: Time domain EM, method='tdem'.
+------------------------------------
+
+``/method='TDEM'`` make use of time-domain EM forward modeling. 
+The following three types of forward models will (eventually) be available:
+
+
+``/type='GA-AEM'`` [DEFAULT].
+[GA-AEM]_. Available for both Linux and Windows, Matlab and Python.
+
+
+``/type='AarhusInv'``.
+[AarhusInv]_. Windows only.
 Not yet implemented
 
-[GA-AEM]_
----------
-Not yet implemented
 
-[SimPEG]_
----------
-Not yet implemented
+``/type='SimPEG'``.
+[SimPEG]_. Python only.
 
+LOG: Well log conditioning, method='log'
+----------------------------------------
 
+``/method='identity'`` maps features of a specific model (realizations of the prior) directly into data. 
   
 
 POST - :samp:`f_post_h5`
 ========================
 
-At the very minimim POST.h5 needs to conatin the index (in PRIOR.h5) of realizations from the posterior
+At the very minimum POST.h5 needs to contain the index (in PRIOR.h5) of realizations from the posterior
 
 .. list-table:: Data and features in POST.h5
    :widths: 10 10 5 5 70 
@@ -276,7 +354,7 @@ At the very minimim POST.h5 needs to conatin the index (in PRIOR.h5) of realizat
 Continious parameters
 ---------------------
 
-For continuous model parameters the follwing generic posterior statistics are computed
+For continuous model parameters the following generic posterior statistics are computed
 
 .. list-table:: Data and features for continuous parameters in POST.h5
    :widths: 10 10 5 5 70 
@@ -291,17 +369,17 @@ For continuous model parameters the follwing generic posterior statistics are co
      - [N,Nm]
      - 
      - 
-     - Pointwise mean of the posterior
+     - Point-wise mean of the posterior
    * - /M1/Median
      - [N,Nm]
      - 
      - 
-     - Poinwise median of the posterior
+     - Point-wise median of the posterior
    * - /M1/Std
      - [N,Nm]
      - 
      - 
-     - Pointwise standard deviation of the posterior
+     - Point-wise standard deviation of the posterior
 
 
 
@@ -327,22 +405,26 @@ For discrete model parameters the following generic posterior statistics are com
      - [N,Nm]
      - 
      - 
-     - Pointwise mode of the posterior
+     - Point-wise mode of the posterior
    * - /M1/Entropy
      - [N,Nm]
      - 
      - 
-     - Poinwise entropy of the posterior
+     - Point-wise entropy of the posterior
    * - /M1/P
      - [N,Nclass,Nm]
      - 
      - 
+<<<<<<< HEAD
      - Pointwise posterior probability of each class.
 * - /M1/M_N
      - [N,Nclass]
      - 
      - 
      - Median number of layers with specific class_id
+=======
+     - Point-wise posterior probability of each class.
+>>>>>>> 8e668d07a2c20d627786f968b3984d9c78979219
 
 
 A typical workflow
@@ -353,12 +435,15 @@ A typical workflow
 
 2. Setup FORWARD.h5
 
-   * Define the forward problem in FORWARD.h5.
+   * Define the forward problem for data type A in FORWARD_A.h5.
+   * Define the forward problem for data type B in FORWARD_B.h5.
 
 3. Setup PRIOR.h5
 
-   * Generate prior model realizations are store in /M1
-   * Use FORWARD.h5 to compute the forward response of the prior realizations.
+   * Generate prior model realizations of model parameter 1 in in /M1
+   * Generate prior model realizations of model parameter 2 in in /M2
+   * Use FORWARD_A.h5 to compute prior data of the prior realizations for data type A
+   * Use FORWARD_A.h5 to compute prior data of the prior realizations for data type B
   
 4. Sample the posterior and output POST.h5
 
