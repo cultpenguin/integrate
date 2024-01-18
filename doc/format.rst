@@ -311,7 +311,7 @@ Discrete parameters
 -------------------
 
 
-For continuous model parameters the following generic posterior statistics are computed
+For discrete model parameters the following generic posterior statistics are computed
 
 
 .. list-table:: Data and features for discrete parameters in POST.h5
@@ -334,10 +334,15 @@ For continuous model parameters the following generic posterior statistics are c
      - 
      - Poinwise entropy of the posterior
    * - /M1/P
-     - [N,Nm,Nclass]
+     - [N,Nclass,Nm]
      - 
      - 
      - Pointwise posterior probability of each class.
+* - /M1/M_N
+     - [N,Nclass]
+     - 
+     - 
+     - Median number of layers with specific class_id
 
 
 A typical workflow
