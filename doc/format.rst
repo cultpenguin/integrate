@@ -27,7 +27,7 @@ The observed data can be of many types, such as TEM data and well-log data
   
   ``Np``: Number of data points (on per location).
   
-  ``Ndi``: Number of data points ``Nd`` per data type ``i``per location.
+  ``Ndi``: Number of data points ``Nd`` per data type ``i`` per location.
   
   ``Nclass``: Number of classes
 
@@ -415,16 +415,14 @@ For discrete model parameters the following generic posterior statistics are com
      - [N,Nclass,Nm]
      - 
      - 
-<<<<<<< HEAD
      - Pointwise posterior probability of each class.
-* - /M1/M_N
+   * - /M1/M_N
      - [N,Nclass]
      - 
      - 
      - Median number of layers with specific class_id
-=======
-     - Point-wise posterior probability of each class.
->>>>>>> 8e668d07a2c20d627786f968b3984d9c78979219
+     
+
 
 
 A typical workflow
