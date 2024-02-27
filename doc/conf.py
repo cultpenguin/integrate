@@ -6,6 +6,11 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import os
+import sys
+#sys.path.insert(0, os.path.abspath('../src/python/'))
+#sys.path.insert(0, os.path.abspath('../src/python/integrate_python/'))
+#sys.path.insert(0, os.path.abspath('../src/python/integrate_python/integrate/'))
 
 project = 'INTEGRATE'
 copyright = '2023,2024 INTEGRATE WORKING GROUP'
@@ -21,8 +26,12 @@ version = '0.23'
 #extensions = ['nbsphinx']
 #extensions = ['myst_nb']
 extensions = [
-    "nbsphinx",
-    "sphinx_gallery.load_style",
+    'nbsphinx',
+    'sphinx_gallery.load_style',
+    'sphinx.ext.duration',
+    'sphinx.ext.doctest',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
 ]
 
 templates_path = ['_templates']

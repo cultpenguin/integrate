@@ -3,8 +3,8 @@ Python Algorithms
 =================
 
 
-integrate_rejection 
--------------------
+integrate_rejection.py 
+----------------------
 This function implements the rejection sampler 
 
 ..  code-block:: python
@@ -22,3 +22,30 @@ For example, to use the prior models and data in `DJURSLAND_P01_N0010000_NB-13_N
 
 
 
+.. #.. literalinclude:: ../../src/python/integrate_rejection.py
+.. #    :language: python
+.. #    :lines: 1-50
+
+.. integrate module
+.. ---------------- 
+
+
+
+integrate python functions
+--------------------------
+
+.. automodule:: integrate
+   :members:
+
+    
+
+.. autosummary::
+   :toctree: generated
+
+   integrate_io
+   integrate_rejection
+   integrate_update_prior_attributes
+   integrate_posterior_stats
+   read_gex
+
+   
