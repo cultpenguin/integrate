@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INTEGRATE using data from Daugaard in Matlab &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plotting posterior statistics" href="matlab_ex_daugaard_post.html" />
+    <link rel="prev" title="Notebooks" href="../notebooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+              <div class="version">
+                0.23
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#matlab-notebooks">Matlab Notebooks</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">INTEGRATE using data from Daugaard in Matlab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.-Setup/define-the-data">1. Setup/define the data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.-Setup-the-prior-model">2. Setup the prior model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#3.-Sample-the-posterior">3. Sample the posterior</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="matlab_ex_daugaard_post.html">Plotting posterior statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#python-notebooks">Python Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">INTEGRATE using data from Daugaard in Matlab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks_matlab/matlab_ex_daugaard.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="INTEGRATE-using-data-from-Daugaard-in-Matlab">
+<h1>INTEGRATE using data from Daugaard in Matlab<a class="headerlink" href="#INTEGRATE-using-data-from-Daugaard-in-Matlab" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Setup the data in DATA.h5</p></li>
+<li><p>Setup the prior PRIOR.h5</p>
+<ol class="arabic simple">
+<li><p>Setup the prior for the model parameters, and store a sample in PRIOR.h5</p></li>
+<li><p>Update PRIOR.h5 with corresponding prior data</p></li>
+</ol>
+</li>
+<li><p>Sample the posterior, and store in POST.h5 1. Compute generic posterior stats4</p></li>
+<li><p>Compute and plot posterior statistics</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Some Paths</span>
+<span class="k">if</span><span class="w"> </span><span class="o">~</span><span class="nb">exist</span><span class="p">(</span><span class="s">&#39;sippi_prior&#39;</span><span class="p">,</span><span class="s">&#39;file&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">addpath</span><span class="w"> </span><span class="s">../sippi</span>
+<span class="w">    </span><span class="nb">addpath</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">mgstat</span>
+<span class="w">    </span><span class="nb">addpath</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">sippi_abc</span>
+<span class="w">    </span><span class="n">sippi_set_path</span>
+<span class="k">end</span>
+<span class="nb">addpath</span><span class="w"> </span><span class="n">matlab</span>
+<span class="nb">addpath</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">DAUGGAARD</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Some choices</span>
+<span class="c">% Set the HDF5 file with data</span>
+<span class="n">f_data_h5</span><span class="p">=</span><span class="s">&#39;tTEM_20230727_20230814_AVG_export.h5&#39;</span>
+<span class="n">f_prior_h5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;PRIOR.h5&#39;</span>
+<span class="n">f_post_h5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;POST.h5&#39;</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<html><body><pre>f_data_h5 = 'tTEM_20230727_20230814_AVG_export.h5'</pre></body></html></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<html><body><pre>f_prior_h5 = 'PRIOR.h5'</pre></body></html></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<html><body><pre>f_post_h5 = 'POST.h5'</pre></body></html></div>
+</div>
+<section id="1.-Setup/define-the-data">
+<h2>1. Setup/define the data<a class="headerlink" href="#1.-Setup/define-the-data" title="Link to this heading"></a></h2>
+<p>In this case the data is allready setup</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">h5ls</span><span class="p">(</span><span class="n">f_data_h5</span><span class="p">)</span>
+<span class="c">% load the geometry</span>
+<span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">ELE</span><span class="p">,</span><span class="n">LINE</span><span class="p">]=</span><span class="n">integrate_get_geometry</span><span class="p">(</span><span class="n">f_data_h5</span><span class="p">);</span>
+<span class="c">% plot the data and geometry</span>
+<span class="n">integrate_plot_data</span><span class="p">(</span><span class="n">f_data_h5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/ - 8 datasets
+DATA 01/08: ELEVATION [1 6001 ]
+DATA 02/08: LINE [1 6001 ]
+DATA 03/08: UTMX [1 6001 ]
+DATA 04/08: UTMY [1 6001 ]
+DATA 05/08: d_obs [40 6001 ]
+DATA 06/08: d_std [40 6001 ]
+DATA 07/08: i_hm [1 26 ]
+DATA 08/08: i_lm [1 14 ]
+integrate_get_geometry: Reading geometry from tTEM_20230727_20230814_AVG_export.h5
+integrate_get_geometry: Reading geometry from tTEM_20230727_20230814_AVG_export.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_4_1.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_4_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_4_2.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_4_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_4_3.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_4_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Warning: Negative data ignoredWarning: Negative data ignored
+</pre></div></div>
+</div>
+</section>
+<section id="2.-Setup-the-prior-model">
+<h2>2. Setup the prior model<a class="headerlink" href="#2.-Setup-the-prior-model" title="Link to this heading"></a></h2>
+<section id="2A.-Setup-the-prior-for-the-model-parameters">
+<h3>2A. Setup the prior for the model parameters<a class="headerlink" href="#2A.-Setup-the-prior-for-the-model-parameters" title="Link to this heading"></a></h3>
+<p>In this example a 3-6-layer type prior is chosen, and ‘N’ realizations are computed and stored in ‘f_prior_h5’.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% SETUP THE PRIOR MODEL</span>
+<span class="n">N</span><span class="p">=</span><span class="mi">100000</span><span class="p">;</span>
+<span class="n">clear</span><span class="w"> </span><span class="s">prior</span>
+<span class="n">im</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">z</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">;</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">type</span><span class="p">=</span><span class="s">&#39;birthdeath&#39;</span><span class="p">;</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="c">% Should probably be fixed. Needed for forward to work properly</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">N_layers_min</span><span class="p">=</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">% min number of layers</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">N_layers_max</span><span class="p">=</span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c">% max number of layers</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">v_min</span><span class="p">=</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">        </span><span class="c">% min value in layer % conduc</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">v_max</span><span class="p">=</span><span class="nb">log10</span><span class="p">(</span><span class="mi">2500</span><span class="p">);</span><span class="w">        </span><span class="c">% max value in layer % conduc</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">is_log10</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">is_discrete</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">cmap</span><span class="p">=</span><span class="n">cmap_geosoft</span><span class="p">;</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">clim</span><span class="p">=[</span><span class="mi">10</span><span class="w"> </span><span class="mi">2500</span><span class="p">];</span>
+<span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">name</span><span class="p">=</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;BD_%d-%d&#39;</span><span class="p">,</span><span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">N_layers_min</span><span class="p">,</span><span class="n">prior</span><span class="p">{</span><span class="n">im</span><span class="p">}.</span><span class="n">N_layers_max</span><span class="p">);</span>
+
+<span class="n">f_prior_h5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">integrate_prior_sippi</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">f_prior_h5</span><span class="p">);</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+           +++++++++++++++++++++++++++++++++++++++++++++ 100.0 100000/100000
+integrate_prior_sippi: Writing to PRIOR.h5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">h5ls</span><span class="p">(</span><span class="n">f_prior_h5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/ - 1 datasets
+DATA 01/01: M1 [101 100000 ]
+   ATT is_discrete --&gt; 0
+   ATT z --&gt; dim [101 1 ]
+   ATT clim --&gt; dim [2 1 ]
+   ATT name --&gt; &#34;BIRTHDEATH - Resistivity&#34;
+</pre></div></div>
+</div>
+</section>
+<section id="2B.-Compute-prior-data">
+<h3>2B. Compute prior data<a class="headerlink" href="#2B.-Compute-prior-data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">id</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">% id of the data to compute, here &#39;/D1&#39;</span>
+<span class="n">f_prior_h5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">integrate_prior_data_gaaem</span><span class="p">(</span><span class="n">f_data_h5</span><span class="p">,</span><span class="n">f_prior_h5</span><span class="p">,</span><span class="n">id</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+integrate_prior_data_gaaem: Reading GEX file TX07_20230731_2x4_RC20-33.gex
+read_gex: Reading &#39;TX07_20230731_2x4_RC20-33.gex&#39;
+WriteSTMfiles: writing LM to D:\PROGRAMMING\integrate_mockup\TX07_20230731_2x4_RC20-33_tTEM42_LM.stm
+WriteSTMfiles: writing HM to D:\PROGRAMMING\integrate_mockup\TX07_20230731_2x4_RC20-33_tTEM42_HM.stm
+copy PRIOR.h5 PRIOR_tTEM_20230727_20230814_AVG_export_TX07_20230731_2x4_RC20-33.h5 START
+copy PRIOR.h5 PRIOR_tTEM_20230727_20230814_AVG_export_TX07_20230731_2x4_RC20-33.h5 DONE
+29/11/2023 09:15:22 +++++++++++---------------------------------- 26.6 17/64
+29/11/2023 09:15:21 ++++++++++++++++----------------------------- 35.9 23/64
+29/11/2023 09:15:21 +++++++++++++++++---------------------------- 39.1 25/64
+29/11/2023 09:15:49 ++------------------------------------------- 4.7 3/64
+29/11/2023 09:15:38 ++------------------------------------------- 6.2 4/64
+29/11/2023 09:15:22 ++++++++++++--------------------------------- 28.1 18/64
+29/11/2023 09:16:14 +-------------------------------------------- 3.1 2/64
+29/11/2023 09:15:22 ++++++++++++++------------------------------- 31.2 20/64
+29/11/2023 09:15:28 +++++---------------------------------------- 12.5 8/64
+29/11/2023 09:15:26 +++++++-------------------------------------- 15.6 10/64
+29/11/2023 09:15:36 +++------------------------------------------ 7.8 5/64
+29/11/2023 09:15:21 +++++++++++++++------------------------------ 34.4 22/64
+29/11/2023 09:15:20 ++++++++++++++++++++++----------------------- 50.0 32/64
+29/11/2023 09:15:25 +++++++-------------------------------------- 17.2 11/64
+29/11/2023 09:15:22 +++++++++++++-------------------------------- 29.7 19/64
+29/11/2023 09:15:21 ++++++++++++++++++--------------------------- 40.6 26/64
+29/11/2023 09:15:20 ++++++++++++++++++++------------------------- 45.3 29/64
+29/11/2023 09:15:24 +++++++++------------------------------------ 20.3 13/64
+29/11/2023 09:15:21 ++++++++++++++++++--------------------------- 42.2 27/64
+29/11/2023 09:15:23 +++++++++++---------------------------------- 25.0 16/64
+29/11/2023 09:15:21 +++++++++++++++++++-------------------------- 43.8 28/64
+29/11/2023 09:15:21 ++++++++++++++------------------------------- 32.8 21/64
+29/11/2023 09:15:33 ++++----------------------------------------- 9.4 6/64
+29/11/2023 09:15:26 ++++++--------------------------------------- 14.1 9/64
+29/11/2023 09:15:23 ++++++++++----------------------------------- 23.4 15/64
+29/11/2023 09:15:21 ++++++++++++++++----------------------------- 37.5 24/64
+29/11/2023 09:15:25 ++++++++------------------------------------- 18.8 12/64
+29/11/2023 09:15:21 +++++++++++++++++++++------------------------ 46.9 30/64
+29/11/2023 09:15:29 ++++----------------------------------------- 10.9 7/64
+29/11/2023 09:15:23 +++++++++------------------------------------ 21.9 14/64
+29/11/2023 09:15:21 +++++++++++++++++++++------------------------ 48.4 31/64
+29/11/2023 09:16:20_0025001-0026563 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:24_0029689-0031250 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:24_0004689-0006250 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:21_0034376-0035938 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:26_0032814-0034375 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:24_0014064-0015625 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:23_0003126-0004688 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:21_0037501-0039063 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:25_0001564-0003125 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:23_0026564-0028125 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:24_0010939-0012500 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:25_0006251-0007813 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:26_0048439-0050000 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:29_0039064-0040625 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:26_0015626-0017188 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:27_0028126-0029688 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:32_0031251-0032813 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:31_0018751-0020313 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:32_0012501-0014063 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:29_0043751-0045313 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:33_0021876-0023438 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:31_0040626-0042188 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:34_0020314-0021875 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:32_0007814-0009375 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:31_0023439-0025000 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:32_0042189-0043750 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:34_0045314-0046875 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:33_0035939-0037500 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:33_0017189-0018750 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:16:35_0009376-0010938 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:35_0000001-0001563 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:38_0046876-0048438 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:16:22_0025001-0026563 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:24_0004689-0006250 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:23_0029689-0031250 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:24_0032814-0034375 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:23_0034376-0035938 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:25_0003126-0004688 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:24_0037501-0039063 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:24_0014064-0015625 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:22_0025001-0026563 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:25_0010939-0012500 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:23_0004689-0006250 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:26_0001564-0003125 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:27_0015626-0017188 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:26_0006251-0007813 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:25_0026564-0028125 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:24_0029689-0031250 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:25_0032814-0034375 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:27_0048439-0050000 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:27_0028126-0029688 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:25_0034376-0035938 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:25_0037501-0039063 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:26_0014064-0015625 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:25_0003126-0004688 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:25_0010939-0012500 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:26_0001564-0003125 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:26_0026564-0028125 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:26_0015626-0017188 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:27_0006251-0007813 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:29_0039064-0040625 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:27_0048439-0050000 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:27_0028126-0029688 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:30_0031251-0032813 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:30_0018751-0020313 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:31_0012501-0014063 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:32_0020314-0021875 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:31_0043751-0045313 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:32_0007814-0009375 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:32_0021876-0023438 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:33_0045314-0046875 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:32_0040626-0042188 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:33_0035939-0037500 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:32_0042189-0043750 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:30_0039064-0040625 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:30_0031251-0032813 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:30_0018751-0020313 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:34_0009376-0010938 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:33_0017189-0018750 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:31_0043751-0045313 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:32_0012501-0014063 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:32_0023439-0025000 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:16:31_0020314-0021875 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:32_0021876-0023438 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:34_0000001-0001563 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:32_0007814-0009375 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:32_0040626-0042188 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:32_0045314-0046875 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:32_0042189-0043750 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:36_0046876-0048438 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:16:33_0035939-0037500 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:34_0017189-0018750 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:34_0023439-0025000 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:16:34_0009376-0010938 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:35_0000001-0001563 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:16:35_0046876-0048438 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:21 ++++++++++++++++++++++++--------------------- 54.7 35/64
+29/11/2023 09:16:46 +++++++++++++++++++++++++++++++++------------ 75.0 48/64
+29/11/2023 09:16:41 ++++++++++++++++++++++++++++++++++++--------- 81.2 52/64
+29/11/2023 09:16:39 +++++++++++++++++++++++++++++++++++++-------- 84.4 54/64
+29/11/2023 09:16:38 ++++++++++++++++++++++++++++++++++++++------- 85.9 55/64
+29/11/2023 09:17:29 +++++++++++++++++++++++---------------------- 53.1 34/64
+29/11/2023 09:17:05 +++++++++++++++++++++++++++++---------------- 65.6 42/64
+29/11/2023 09:17:09 ++++++++++++++++++++++++++++----------------- 62.5 40/64
+29/11/2023 09:16:54 ++++++++++++++++++++++++++++++++------------- 71.9 46/64
+29/11/2023 09:16:28 +++++++++++++++++++++++++++++++++++++++++++++ 100.0 64/64
+29/11/2023 09:17:24 +++++++++++++++++++++++++-------------------- 56.2 36/64
+29/11/2023 09:17:34 +++++++++++++++++++++++---------------------- 51.6 33/64
+29/11/2023 09:16:49 ++++++++++++++++++++++++++++++++++----------- 76.6 49/64
+29/11/2023 09:16:35 ++++++++++++++++++++++++++++++++++++++++----- 89.1 57/64
+29/11/2023 09:16:47 +++++++++++++++++++++++++++++++++++++-------- 82.8 53/64
+29/11/2023 09:16:48 +++++++++++++++++++++++++++++++++++---------- 78.1 50/64
+29/11/2023 09:17:16 ++++++++++++++++++++++++++++----------------- 64.1 41/64
+29/11/2023 09:16:39 ++++++++++++++++++++++++++++++++++++++++----- 90.6 58/64
+29/11/2023 09:16:36 ++++++++++++++++++++++++++++++++++++++++++--- 95.3 61/64
+29/11/2023 09:16:40 +++++++++++++++++++++++++++++++++++++++++---- 92.2 59/64
+29/11/2023 09:17:04 +++++++++++++++++++++++++++++++-------------- 70.3 45/64
+29/11/2023 09:17:06 ++++++++++++++++++++++++++++++--------------- 68.8 44/64
+29/11/2023 09:16:36 +++++++++++++++++++++++++++++++++++++++++++-- 96.9 62/64
+29/11/2023 09:16:39 ++++++++++++++++++++++++++++++++++++++++++--- 93.8 60/64
+29/11/2023 09:17:26 ++++++++++++++++++++++++++------------------- 59.4 38/64
+29/11/2023 09:16:53 +++++++++++++++++++++++++++++++++++---------- 79.7 51/64
+29/11/2023 09:16:45 +++++++++++++++++++++++++++++++++++++++------ 87.5 56/64
+29/11/2023 09:17:13 ++++++++++++++++++++++++++++++--------------- 67.2 43/64
+29/11/2023 09:17:04 +++++++++++++++++++++++++++++++++------------ 73.4 47/64
+29/11/2023 09:17:26 +++++++++++++++++++++++++++------------------ 60.9 39/64
+29/11/2023 09:16:38 ++++++++++++++++++++++++++++++++++++++++++++- 98.4 63/64
+29/11/2023 09:17:34 ++++++++++++++++++++++++++------------------- 57.8 37/64
+29/11/2023 09:17:30_0082813-0084375 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:29_0073438-0075000 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:28_0053126-0054687 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:29_0079688-0081250 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:28_0064063-0065625 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:31_0070313-0071875 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:28_0084376-0085937 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:30_0051563-0053125 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:32_0075001-0076562 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:30_0054688-0056250 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:31_0050001-0051562 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:30_0098438-0100000 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:32_0060938-0062500 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:33_0087501-0089062 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:33_0076563-0078125 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:41_0089063-0090625 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:37_0081251-0082812 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:39_0062501-0064062 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:40_0093751-0095312 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:41_0090626-0092187 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:43_0068751-0070312 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:44_0057813-0059375 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:45_0067188-0068750 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:46_0078126-0079687 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:42_0092188-0093750 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:43_0095313-0096875 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:44_0071876-0073437 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:46_0085938-0087500 ++++++++++++++------------------------------- 32.0 500/1563
+29/11/2023 09:17:42_0065626-0067187 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:47_0096876-0098437 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:48_0059376-0060937 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:28_0053126-0054687 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:48_0056251-0057812 ++++++++++++++------------------------------- 32.0 500/1562
+29/11/2023 09:17:28_0082813-0084375 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:29_0084376-0085937 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:29_0073438-0075000 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:30_0051563-0053125 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:29_0079688-0081250 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:27_0064063-0065625 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:29_0070313-0071875 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:30_0098438-0100000 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:27_0053126-0054687 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:29_0075001-0076562 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:28_0082813-0084375 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:30_0054688-0056250 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:28_0084376-0085937 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:29_0073438-0075000 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:32_0087501-0089062 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:29_0051563-0053125 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:30_0050001-0051562 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:29_0079688-0081250 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:29_0064063-0065625 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:30_0075001-0076562 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:32_0060938-0062500 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:30_0070313-0071875 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:30_0098438-0100000 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:34_0076563-0078125 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:31_0054688-0056250 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:31_0087501-0089062 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:31_0050001-0051562 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:32_0060938-0062500 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:38_0081251-0082812 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:33_0076563-0078125 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:40_0062501-0064062 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:40_0089063-0090625 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:38_0081251-0082812 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:40_0093751-0095312 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:41_0090626-0092187 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:43_0067188-0068750 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:43_0057813-0059375 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:39_0089063-0090625 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:40_0062501-0064062 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:41_0067188-0068750 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:43_0071876-0073437 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:43_0068751-0070312 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:41_0090626-0092187 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:41_0093751-0095312 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:43_0078126-0079687 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:44_0095313-0096875 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:43_0092188-0093750 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:42_0057813-0059375 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:46_0059376-0060937 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:44_0065626-0067187 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:46_0085938-0087500 ++++++++++++++++++++++++++++----------------- 64.0 1000/1563
+29/11/2023 09:17:44_0068751-0070312 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:44_0078126-0079687 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:44_0095313-0096875 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:44_0071876-0073437 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:44_0092188-0093750 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:44_0065626-0067187 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:47_0096876-0098437 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:49_0056251-0057812 ++++++++++++++++++++++++++++----------------- 64.0 1000/1562
+29/11/2023 09:17:45_0085938-0087500 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1563
+29/11/2023 09:17:45_0059376-0060937 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:46_0096876-0098437 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+29/11/2023 09:17:47_0056251-0057812 +++++++++++++++++++++++++++++++++++++++++++-- 96.0 1500/1562
+integrate_prior_data_gaaem: writing data to to PRIOR_tTEM_20230727_20230814_AVG_export_TX07_20230731_2x4_RC20-33.h5:/D1
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="3.-Sample-the-posterior">
+<h2>3. Sample the posterior<a class="headerlink" href="#3.-Sample-the-posterior" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f_post_h5</span><span class="p">=[];</span>
+<span class="n">N_use</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="c">% Size of lookup table to use</span>
+<span class="n">nr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">400</span><span class="p">;</span><span class="w"> </span><span class="c">% Number of realizations</span>
+<span class="n">autoT</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">% Automatic annealing [0]: no, [1]: yes, [inf]: max annealing (L=1);</span>
+<span class="n">f_post_h5</span><span class="p">=</span><span class="n">integrate_rejection</span><span class="p">(</span><span class="n">f_prior_h5</span><span class="p">,</span><span class="n">f_data_h5</span><span class="p">,</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">N_use</span><span class="p">,</span><span class="n">nr</span><span class="p">,</span><span class="n">autoT</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<html><body><pre>N_use =
+      100000
+</pre></body></html></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+29-Nov-2023: Starting rejection sampling
+PRIOR: PRIOR_tTEM_20230727_20230814_AVG_export_TX07_20230731_2x4_RC20-33.h5
+DATA: tTEM_20230727_20230814_AVG_export.h5
+POST: PRIOR_tTEM_20230727_20230814_AVG_export_TX07_20230731_2x4_R_POST_Nu100000_aT1.h5
+           ++------------------------------------------- 5.0 300/6001
+           --------------------------------------------- 1.7 100/6001
+           +-------------------------------------------- 3.3 200/6001
+           ++++++++++++++++++--------------------------- 41.7 2500/6001
+           ++++++++------------------------------------- 20.0 1200/6001
+           ++------------------------------------------- 6.7 400/6001
+           +++++++++++++-------------------------------- 30.0 1800/6001
+           +++++++++++++++------------------------------ 35.0 2100/6001
+           +++++++++++++++++++++++---------------------- 51.7 3100/6001
+           ++++----------------------------------------- 10.0 600/6001
+           ++++++--------------------------------------- 15.0 900/6001
+           +++++++-------------------------------------- 16.7 1000/6001
+           ++++++++++++++------------------------------- 31.7 1900/6001
+           ++++++++++++++------------------------------- 33.3 2000/6001
+           +++++++++++++++++---------------------------- 38.3 2300/6001
+           ++++++++++++++++----------------------------- 36.7 2200/6001
+           ++++++++++++++++++++++----------------------- 50.0 3000/6001
+           +++++++++------------------------------------ 21.7 1300/6001
+           +++++++++++++++++++++------------------------ 48.3 2900/6001
+           ++++++++------------------------------------- 18.3 1100/6001
+           +++++---------------------------------------- 11.7 700/6001
+           +++++++++++++++++---------------------------- 40.0 2400/6001
+           +++------------------------------------------ 8.3 500/6001
+           +++++---------------------------------------- 13.3 800/6001
+           ++++++++++----------------------------------- 23.3 1400/6001
+           ++++++++++++++++++++------------------------- 46.7 2800/6001
+           +++++++++++++++++++-------------------------- 43.3 2600/6001
+           ++++++++++++++++++++------------------------- 45.0 2700/6001
+           ++++++++++++--------------------------------- 28.3 1700/6001
+           +++++++++++---------------------------------- 26.7 1600/6001
+           +++++++++++---------------------------------- 25.0 1500/6001
+           ++++++++++++++++++++++++++++----------------- 63.3 3800/6001
+           ++++++++++++++++++++++++++------------------- 58.3 3500/6001
+           +++++++++++++++++++++++++++------------------ 61.7 3700/6001
+           +++++++++++++++++++++++++++++---------------- 66.7 4000/6001
+           ++++++++++++++++++++++++++------------------- 60.0 3600/6001
+           +++++++++++++++++++++++++-------------------- 56.7 3400/6001
+           +++++++++++++++++++++++---------------------- 53.3 3200/6001
+           ++++++++++++++++++++++++++++++++++----------- 76.7 4600/6001
+           +++++++++++++++++++++++++++++++++++---------- 78.3 4700/6001
+           +++++++++++++++++++++++++++++---------------- 65.0 3900/6001
+           +++++++++++++++++++++++++++++++-------------- 70.0 4200/6001
+           +++++++++++++++++++++++++++++++++++---------- 80.0 4800/6001
+           ++++++++++++++++++++++++++++++--------------- 68.3 4100/6001
+           ++++++++++++++++++++++++--------------------- 55.0 3300/6001
+           ++++++++++++++++++++++++++++++++------------- 71.7 4300/6001
+           ++++++++++++++++++++++++++++++++------------- 73.3 4400/6001
+           ++++++++++++++++++++++++++++++++++++--------- 81.7 4900/6001
+           +++++++++++++++++++++++++++++++++++++++------ 88.3 5300/6001
+           +++++++++++++++++++++++++++++++++------------ 75.0 4500/6001
+           ++++++++++++++++++++++++++++++++++++++++----- 90.0 5400/6001
+           +++++++++++++++++++++++++++++++++++++-------- 83.3 5000/6001
+           ++++++++++++++++++++++++++++++++++++++------- 85.0 5100/6001
+           ++++++++++++++++++++++++++++++++++++++++++--- 95.0 5700/6001
+           +++++++++++++++++++++++++++++++++++++++++++-- 96.7 5800/6001
+           ++++++++++++++++++++++++++++++++++++++------- 86.7 5200/6001
+           +++++++++++++++++++++++++++++++++++++++++---- 91.7 5500/6001
+           ++++++++++++++++++++++++++++++++++++++++++++- 98.3 5900/6001
+           ++++++++++++++++++++++++++++++++++++++++++++- 100.0 6000/6001
+           +++++++++++++++++++++++++++++++++++++++++---- 93.3 5600/6001
+29-Nov-2023: Ended rejection sampling
+Average temperature, T=67.2
+Inverted 6001 soundings in 1.5 minutes, using N_use=100000 -&gt;  15.3 ms/sounding
+Exporting inversion results to &#34;PRIOR_tTEM_20230727_20230814_AVG_export_TX07_20230731_2x4_R_POST_Nu100000_aT1.h5&#34;
+</pre></div></div>
+</div>
+<section id="3A.-Compute-some-generic-posterior-statistics-and-update-f_post_h5">
+<h3>3A. Compute some generic posterior statistics and update f_post_h5<a class="headerlink" href="#3A.-Compute-some-generic-posterior-statistics-and-update-f_post_h5" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">integrate_posterior_stats</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">)</span>
+<span class="n">h5ls</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+integrate_posterior_stats: post stat for /M1, is_discrete=0
+       /M1 +-------------------------------------------- 3.3 200/6001
+       /M1 ++------------------------------------------- 6.7 400/6001
+       /M1 ++++----------------------------------------- 10.0 600/6001
+       /M1 +++++---------------------------------------- 13.3 800/6001
+       /M1 +++++++-------------------------------------- 16.7 1000/6001
+       /M1 ++++++++------------------------------------- 20.0 1200/6001
+       /M1 ++++++++++----------------------------------- 23.3 1400/6001
+       /M1 +++++++++++---------------------------------- 26.7 1600/6001
+       /M1 +++++++++++++-------------------------------- 30.0 1800/6001
+       /M1 ++++++++++++++------------------------------- 33.3 2000/6001
+       /M1 ++++++++++++++++----------------------------- 36.7 2200/6001
+       /M1 +++++++++++++++++---------------------------- 40.0 2400/6001
+       /M1 +++++++++++++++++++-------------------------- 43.3 2600/6001
+       /M1 ++++++++++++++++++++------------------------- 46.7 2800/6001
+       /M1 ++++++++++++++++++++++----------------------- 50.0 3000/6001
+       /M1 +++++++++++++++++++++++---------------------- 53.3 3200/6001
+       /M1 +++++++++++++++++++++++++-------------------- 56.7 3400/6001
+       /M1 ++++++++++++++++++++++++++------------------- 60.0 3600/6001
+       /M1 ++++++++++++++++++++++++++++----------------- 63.3 3800/6001
+       /M1 +++++++++++++++++++++++++++++---------------- 66.7 4000/6001
+       /M1 +++++++++++++++++++++++++++++++-------------- 70.0 4200/6001
+       /M1 ++++++++++++++++++++++++++++++++------------- 73.3 4400/6001
+       /M1 ++++++++++++++++++++++++++++++++++----------- 76.7 4600/6001
+       /M1 +++++++++++++++++++++++++++++++++++---------- 80.0 4800/6001
+       /M1 +++++++++++++++++++++++++++++++++++++-------- 83.3 5000/6001
+       /M1 ++++++++++++++++++++++++++++++++++++++------- 86.7 5200/6001
+       /M1 ++++++++++++++++++++++++++++++++++++++++----- 90.0 5400/6001
+       /M1 +++++++++++++++++++++++++++++++++++++++++---- 93.3 5600/6001
+       /M1 +++++++++++++++++++++++++++++++++++++++++++-- 96.7 5800/6001
+       /M1 ++++++++++++++++++++++++++++++++++++++++++++- 100.0 6000/6001
+integrate_posterior_stats: done
+/ - 3 datasets
+DATA 01/03: EV [1 6001 ]
+DATA 02/03: T [1 6001 ]
+DATA 03/03: i_use [400 6001 ]
+GROUP 03/01: /M1
+/M1 - 3 datasets
+DATA 01/03: Mean [101 6001 ]
+DATA 02/03: Median [101 6001 ]
+DATA 03/03: Std [101 6001 ]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span>##<span class="w"> </span><span class="n">Plot</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">figures</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Invalid text character. Check for unsupported symbol, invisible character, or pasting of non-ASCII characters.
+</pre></div></div>
+</div>
+</section>
+<section id="Temperarture-and-Evidence">
+<h3>Temperarture and Evidence<a class="headerlink" href="#Temperarture-and-Evidence" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">integrate_plot_T_EV</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+integrate_get_geometry: Reading geometry from tTEM_20230727_20230814_AVG_export.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_17_1.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_17_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_17_2.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_17_2.png" />
+</div>
+</div>
+</section>
+<section id="1D-Posterior-plot">
+<h3>1D Posterior plot<a class="headerlink" href="#1D-Posterior-plot" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% plot single sounding (number 10)</span>
+<span class="nb">figure</span>
+<span class="n">is</span><span class="p">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">integrate_plot_sounding_model</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">is</span><span class="p">)</span>
+
+<span class="c">% plot data from sounding</span>
+<span class="nb">figure</span>
+<span class="n">integrate_plot_sounding</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">is</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_19_0.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_19_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+M1
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_19_2.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_19_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Warning: Negative data ignored
+</pre></div></div>
+</div>
+</section>
+<section id="2D-Posterior-plots">
+<h3>2D Posterior plots<a class="headerlink" href="#2D-Posterior-plots" title="Link to this heading"></a></h3>
+<section id="2D-Posterior-data">
+<h4>2D Posterior data<a class="headerlink" href="#2D-Posterior-data" title="Link to this heading"></a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Select soundings to plot</span>
+<span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">ELE</span><span class="p">,</span><span class="n">LINE</span><span class="p">]=</span><span class="n">integrate_get_geometry</span><span class="p">(</span><span class="n">f_data_h5</span><span class="p">);</span>
+<span class="n">use_line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<span class="n">iplot</span><span class="p">=</span><span class="nb">find</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">LINE</span><span class="o">&lt;</span><span class="n">use_line</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+
+<span class="c">% Plot many data responses</span>
+<span class="nb">figure</span>
+<span class="n">integrate_plot_sounding</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">iplot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+integrate_get_geometry: Reading geometry from tTEM_20230727_20230814_AVG_export.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_22_1.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_22_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Warning: Negative data ignored
+</pre></div></div>
+</div>
+</section>
+<section id="2D-Profile">
+<h4>2D Profile<a class="headerlink" href="#2D-Profile" title="Link to this heading"></a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">iplot</span><span class="p">=</span><span class="nb">find</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">LINE</span><span class="o">&gt;=</span><span class="mi">1900</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">LINE</span><span class="o">&lt;=</span><span class="mi">1930</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="n">iplot</span><span class="p">=</span><span class="nb">find</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">LINE</span><span class="o">&lt;</span><span class="mi">500</span><span class="p">));</span>
+<span class="n">integrate_plot_profile</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">iplot</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_24_0.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_24_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+integrate_plot_profile_continuous: Plotting profile of /M1
+integrate_get_geometry: Reading geometry from tTEM_20230727_20230814_AVG_export.h5
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="3D-Posterior-plots">
+<h3>3D Posterior plots<a class="headerlink" href="#3D-Posterior-plots" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">iplot</span><span class="p">=</span><span class="nb">find</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">LINE</span><span class="o">&gt;=</span><span class="mi">300</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">LINE</span><span class="o">&lt;=</span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="n">figure</span>
+<span class="s">integrate_plot_3d_posterior(f_post_h5,&#39;M1&#39;,&#39;Median&#39;,iplot,&#39;doHardcopy&#39;,1)</span>
+<span class="k">if</span><span class="w"> </span><span class="n">h5data_exist</span><span class="p">(</span><span class="n">f_prior_h5</span><span class="p">,</span><span class="s">&#39;/M2&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">figure</span>
+<span class="w">    </span><span class="n">integrate_plot_3d_posterior</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="s">&#39;M2&#39;</span><span class="p">,</span><span class="s">&#39;Mode&#39;</span><span class="p">,</span><span class="n">iplot</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="k">if</span><span class="w"> </span><span class="n">h5data_exist</span><span class="p">(</span><span class="n">f_prior_h5</span><span class="p">,</span><span class="s">&#39;/M3&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">figure</span>
+<span class="w">    </span><span class="n">integrate_plot_3d_posterior</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="s">&#39;M3&#39;</span><span class="p">,</span><span class="s">&#39;Mode&#39;</span><span class="p">,</span><span class="n">iplot</span><span class="p">)</span>
+<span class="k">end</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_matlab_matlab_ex_daugaard_26_0.png" src="../_images/notebooks_matlab_matlab_ex_daugaard_26_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+integrate_plot_3d_posterior: Plotting profile of /M1
+integrate_get_geometry: Reading geometry from tTEM_20230727_20230814_AVG_export.h5
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks.html" class="btn btn-neutral float-left" title="Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="matlab_ex_daugaard_post.html" class="btn btn-neutral float-right" title="Plotting posterior statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
