@@ -1,4 +1,11 @@
-# INTEGRATE workflow - a simple (resistivity only) prior, tTEM data
+===================================================================
+INTEGRATE workflows
+====================================================================
+
+INTEGRATE workflows - a simple (resistivity only) prior, tTEM data
+====================================================================
+
+
 
 ## Create realizations from the prior and store in PRIOR.h5
 
