@@ -2,6 +2,9 @@
 INTEGRATE workflows
 ====================================================================
 
+DIfferent examples of workflows using INTEGRATE.
+
+
 INTEGRATE workflows - a simple (resistivity only) prior, tTEM data
 ====================================================================
 
