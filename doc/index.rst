@@ -65,6 +65,7 @@ The manual
    install
    algorithms      
    format
+   workflow
    notebooks
    contributions
    references
