@@ -12,6 +12,10 @@ The Duagaard type prior results in 3 types of model parameters stored as
 
 ### Compute prior EM data 
 
+Setup af 'forward' type hdf5 that defines the type of forward
+
+    FORWARD.h5:/method/:'tdem'
+
     PRIOR.h5:/M1
     PRIOR.h5:/M2
     PRIOR.h5:/M2
@@ -24,4 +28,7 @@ The Duagaard type prior results in 3 types of model parameters stored as
     PRIOR.h5:/M2
     PRIOR.h5:/D1
     PRIOR.h5:/D2 --> lithology 'data'
+
+
+
 
