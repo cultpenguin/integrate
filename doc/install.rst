@@ -5,12 +5,29 @@ Installation
 Python
 ======
 
+It is suggested to use a virtual environment or docker image to install INTEGRATE in Python
+For example, in Ubuntu you can use the following commands to create a virtual environment and install INTEGRATE:
+
+:: 
+    
+        sudo apt-get install python3-venv
+        python3 -m venv integrate
+        source integrate/bin/activate
+        
 
 The following packages are required using INTEGRATE with Python:
 
 ::
 
-      pip install numpy scipy matplotlib jupyterlab h5py tqdm 
+        pip install numpy scipy matplotlib jupyterlab h5py tqdm 
+        pip install integrate
+
+or 
+
+::
+    
+            cd /path/to/integrate_module
+            pip install .   
 
 In addtiton you will need to install one of the EM forward codes described below. 
 
