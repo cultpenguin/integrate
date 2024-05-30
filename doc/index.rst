@@ -69,6 +69,7 @@ The manual
    notebooks
    contributions
    references
- 
+   modules
+
 
    

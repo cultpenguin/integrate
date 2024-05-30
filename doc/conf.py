@@ -10,7 +10,8 @@ import os
 import sys
 #sys.path.insert(0, os.path.abspath('../src/python/'))
 #sys.path.insert(0, os.path.abspath('../src/python/integrate_python/'))
-#sys.path.insert(0, os.path.abspath('../src/python/integrate_python/integrate/'))
+sys.path.insert(0, os.path.abspath('../../integrate_module'))
+sys.path.insert(0, os.path.abspath('../../integrate_module/integrate/'))
 
 project = 'INTEGRATE'
 copyright = '2023,2024 INTEGRATE WORKING GROUP'
@@ -32,7 +33,9 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
+
 ]
+autosummary_generate = True
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md']
