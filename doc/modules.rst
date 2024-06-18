@@ -2,21 +2,9 @@ Modules
 =======
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
-.. automodule:: integrate
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: integrate_plot
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: integrate_io
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+   modules/integrate
+   modules/integrate_plot
+   modules/integrate_io
