@@ -18,6 +18,7 @@ jobs:
           pip install sphinx sphinx_rtd_theme myst_parser nbsphinx sphinx-gallery
           git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
           pip install git+https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
+          pwd
       - name: Install Pandoc
         run: |
           sudo apt-get update
@@ -25,9 +26,10 @@ jobs:
           pandoc --version
       - name: Sphinx build
         run: |
+          pwd
           sphinx-build doc _build
           ls -lrt 
-          ls -lrt _build/modules/
+          cat _build/modules/integrate_io.html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
