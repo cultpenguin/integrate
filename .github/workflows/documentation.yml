@@ -19,7 +19,8 @@ jobs:
           git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
           pip install git+https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git
           pwd
-          ls -lrt
+          ls -lrt integrate_module
+          ls -lrt doc
           ls -lart
       - name: Install Pandoc
         run: |
