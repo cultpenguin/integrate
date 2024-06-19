@@ -16,9 +16,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           pip install sphinx sphinx_rtd_theme myst_parser nbsphinx sphinx-gallery
-          git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git
-          pwd
+          git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
           pip install git+https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git
+          pwd
+          ls -lrt
+          ls -lart
       - name: Install Pandoc
         run: |
           sudo apt-get update
