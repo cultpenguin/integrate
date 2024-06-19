@@ -10,15 +10,16 @@ import os
 import sys
 #sys.path.insert(0, os.path.abspath('../src/python/'))
 #sys.path.insert(0, os.path.abspath('../src/python/integrate_python/'))
-sys.path.insert(0, os.path.abspath('../../integrate_module'))
+#sys.path.insert(0, os.path.abspath('../../integrate_module'))
 sys.path.insert(0, os.path.abspath('../../integrate_module/integrate/'))
+sys.path.insert(0, os.path.abspath('../integrate_module/integrate/'))
 
 project = 'INTEGRATE'
 copyright = '2023,2024 INTEGRATE WORKING GROUP'
 author = 'INTEGRATE WORKING GROUP'
 
 # The short X.Y version
-version = '0.23'
+version = '0.23'    
 # The full version, including alpha/beta/rc tags
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
