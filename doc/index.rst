@@ -8,26 +8,40 @@ INTEGRATE: Fast Probabilistic inversion of EM data using informed prior models
 ------------------------------------------------------------------------------
 Last updated: |today|.
 
-The primary objective of INTEGRATE is to facilitate quantitative decision-making related to the exploration and exploitation of raw materials in Denmark.
+INTEGRATE provides a python module and methods for fast probabilistic inversion of local information (e.g. electromagnetic data (EM), well log data, ...) using informed prior models. 
 
-We are developing a framework (including algorithms) that enables end-users to make informed decisions based on prior knowledge about the subsurface and recorded electromagnetic (EM) data. This framework will be developed and made publicly available.
-
-The project consists of the following steps:
+The aim is to provide methods for the following tasks, that together represent a probabilistic workflow: 
 
 Prior modeling
    Tools will be developed to quantify (through forward simulation) as much information as possible about the subsurface, such as the expected distribution of lithological layers and a model that links resistivity to lithology.
    See, for example, [MADSEN2023]_.
   
 Forward modeling
-   We are considering using GA-AEM [GA-AEM], simPEG [SimPEG], and AarhusInv [AarhusInv]_ as forward modeling engines.
+   For each type of data considered a forward model must be available. 
+
+   For EM type data we consider using GA-AEM (https://github.com/GeoscienceAustralia/ga-aem), simPEG [SimPEG]_, and AarhusInv [AarhusInv]_ as forward modeling engines.
+
    
 Probabilistic Inversion
    An implementation of the 1D probabilistic localized inversion using the **Localized Rejection Sampler** [HANSEN2021]_ and **Machine Learning** [HANSENFINLAY2022]_.
 
 Analysis
-   We will develop tools for visual illustrations of the results, such as 1D, 2D cross-sections, 3D rendering, as well as uncertainty quantification.
-   Further a more advanced tool will be developed that will allow computing and visualizing, in principle, the posterior probability of any feature of the prior model.
+   Tools for visual illustrations of the results will be developed, such as 1D, 2D cross-sections, 3D rendering, as well as uncertainty quantification.
+   
 
+Getting started
+===============
+Refer to the documentation in :doc:`install` for installation instructions.
+
+Examples of using the module can be found in the :doc:`notebooks`.
+
+
+
+The INTEGRATE project
+=====================
+The project is developed as part of the INTEGRATE project, where the goal is to develop probabilistic support tools that allow quantifying the potential for finding raw material resources close to where it is to be utilized.
+
+For more information, please visit the INTEGRATE website (https://integrate.nu/).
 
 
 Source Code
@@ -63,7 +77,7 @@ The manual
    :maxdepth: 3
 	      
    install
-   algorithms      
+   gettingstarted
    format
    workflow
    notebooks
