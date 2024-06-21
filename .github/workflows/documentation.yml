@@ -15,7 +15,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          pip install sphinx sphinx_rtd_theme myst_parser nbsphinx sphinx-gallery h5py numpy
+          pip install sphinx sphinx_rtd_theme myst_parser nbsphinx sphinx-gallery
+          pip install h5py numpy matplotlib tqdm scipy 
           git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
           pip install git+https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
       - name: Install Pandoc
