@@ -29,7 +29,7 @@ The following steps will install the module, optionally in a virtual environment
         pip install --upgrade -r requirements.txt
         pip install .
 
-This allow working with the the examples (:doc:`notebooks`) that does not require EM forward modeling.
+This allows working with the examples (:doc:`notebooks`) that does not require EM forward modeling.
 
 
 FORWARD MODELING
