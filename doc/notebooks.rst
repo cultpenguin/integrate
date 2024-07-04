@@ -3,6 +3,12 @@ Notebooks
 =============
 
 
+Python Notebooks
+================
+
+.. nbgallery::
+   notebooks/integrate_case_simpleprior
+   
 Matlab Notebooks
 ================
 
@@ -11,6 +17,3 @@ Matlab Notebooks
    notebooks_matlab/matlab_ex_daugaard_post
 
 
-Python Notebooks
-================
-to come ...
