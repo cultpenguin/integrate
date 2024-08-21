@@ -25,49 +25,72 @@ DATA.h5
 DATA.h5 contains observed data, and its associated geometry. 
 The observed data can be of many types, such as TEM data and well-log data
   
-  ``Np``: Number of data points (on per location).
+  ``Np``: Number of data locations (typically one set data per unique X-Y location)
   
   ``Ndi``: Number of data points ``Nd`` per data type ``i`` per location.
   
   ``Nclass``: Number of classes
 
-.. list-table:: Data and features om DATA.h5
+The datasets ``UTMX``, ``UTMY``, ``ELEVATION``, and ``LINE`` are mandatory for most plotting routines in INTEGRATE, 
+but are not used in the inversion itself.
+
+The attribute ``D1/noise_model`` is mandatory for all data types, and describes the noise model used for the data.
+
+.. list-table:: Data and attributes for DATA.h5
    :widths: 10 10 5 5 70 
    :header-rows: 1
 
    * - Dataset
      - Format
-     - Feature
+     - Attribute
      - Mandatory
      - Description
    * - /UTMX
      - [Np,1]
      - 
-     - *
+     - (*)
      - X - location of data points
 
    * - /UTMY
      - [Np,1]
      - 
-     - *
+     - (*)
      - Y - location of data points    
    * - /ELEVATION
      - [Np,1]
      - 
-     - *
+     - (*)
      - Elevation at data points    
    * - /LINE
      - [Np,1]
      - 
-     - *
+     - (*)
      - Linenumber at data points    
-   * - --
-     - 
-     - 
-     - 
-     - 
    * - /D1/noise_model
      - [string]
+     - *
+     - *
+     - A string describing the noise model used for the data. 
+
+The format of the observed data, and the associate uncertainty, depends on the type of data, and the choice of noise model.
+
+"""""""""""""""""""""""""""""""""
+Gaussian noise  - continuous data
+"""""""""""""""""""""""""""""""""
+
+For continuous data and the multivariate Gaussian noise model can be chosen by setting the attribute ``D1/noise_model=gaussian`` 
+
+.. list-table:: Data and attributes om DATA.h5 for continuous data and multivariate Gaussian noise model
+   :widths: 10 10 5 5 70 
+   :header-rows: 1
+
+   * - Dataset
+     - Format
+     - Attribute
+     - Mandatory
+     - Description
+   * - /D1/noise_model
+     - [string]='gaussian'
      - *
      - *
      - A string describing the noise model used for the data. Here ``'gaussian'`` to represent a multivariate Gaussian noise model.
@@ -111,15 +134,31 @@ The observed data can be of many types, such as TEM data and well-log data
      - 
      - 
      - 
+
+"""""""""""""""""""""""""""""""""
+Multinomial noise - discrete data
+"""""""""""""""""""""""""""""""""
+
+For discrete data the multinomial distribution can use as likelihhood by setting the attribute ``D1/noise_model=multinomial`` 
+
+.. list-table:: Data and attributes om DATA.h5 for  data and multinomial noise model
+   :widths: 10 10 5 5 70 
+   :header-rows: 1
+
+   * - Dataset
+     - Format
+     - Attribute
+     - Mandatory
+     - Description
    * - /D2/noise_model
-     - [string]
+     - [string]='multinomial'
      - *
      - *
-     - A string describing the noise model used for the data. Here ``'class_probability_group'``
+     - The multinomial distribution is used as likelihood model for the data.
    * - /D2/d_obs
-     - [Np,Nclass,Nd2]
+     - [Np,Nclass]
      - 
-     - 
+     - *
      - Observed data (class probabilities)
    * - /D2/i_group
      - [Np,1]
@@ -127,7 +166,7 @@ The observed data can be of many types, such as TEM data and well-log data
      - 
      - Indicates whether the Nd2 data should considered as groups or individually
    * - /D2/i_use
-     - [Nd,Nd]
+     - [Np,1]
      - 
      - 
      - Binary indicator of whether a data point should be used or not
@@ -154,7 +193,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
 
    * - Dataset
      - Format
-     - Feature
+     - attribute
      - Mandatory
      - Description
    * - /M1
@@ -214,7 +253,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
 
    * - Dataset
      - Format
-     - Feature
+     - attribute
      - Mandatory
      - Description
    * - /D1
@@ -243,7 +282,7 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
 
 ``/D1`` is only mandatory when PRIOR.h5 is used for inversion
 
-All the mandatory features specified for ``/M1`` are also mandatory for other features, i.e.  ``/M1``,  ``/M2``, ... . 
+All the mandatory attributes specified for ``/M1`` are also mandatory for other attributes, i.e.  ``/M1``,  ``/M2``, ... . 
 
 
 f_forward_h5 [string]: Defines the name of the HDF5 file that contains information need to solved the forward problem...
@@ -263,7 +302,7 @@ The attribute ``/method`` refer to a specific choice of forward method.
 
    * - Dataset
      - Format
-     - Feature
+     - attribute
      - Mandatory
      - Description
    * - /method
@@ -303,7 +342,7 @@ Not yet implemented
 LOG: Well log conditioning, method='log'
 ----------------------------------------
 
-``/method='identity'`` maps features of a specific model (realizations of the prior) directly into data. 
+``/method='identity'`` maps attributes of a specific model (realizations of the prior) directly into data. 
   
 
 POST - :samp:`f_post_h5`
@@ -311,13 +350,13 @@ POST - :samp:`f_post_h5`
 
 At the very minimum POST.h5 needs to contain the index (in PRIOR.h5) of realizations from the posterior
 
-.. list-table:: Data and features in POST.h5
+.. list-table:: Data and attributes in POST.h5
    :widths: 10 10 5 5 70 
    :header-rows: 1
 
    * - Dataset     
      - Format
-     - Feature
+     - attribute
      - Mandatory
      - Description     
    * - /i_use
@@ -356,13 +395,13 @@ Continious parameters
 
 For continuous model parameters the following generic posterior statistics are computed
 
-.. list-table:: Data and features for continuous parameters in POST.h5
+.. list-table:: Data and attributes for continuous parameters in POST.h5
    :widths: 10 10 5 5 70 
    :header-rows: 1
 
    * - Dataset     
      - Format
-     - Feature
+     - attribute
      - Mandatory
      - Description     
    * - /M1/Mean
@@ -392,13 +431,13 @@ Discrete parameters
 For discrete model parameters the following generic posterior statistics are computed
 
 
-.. list-table:: Data and features for discrete parameters in POST.h5
+.. list-table:: Data and attributes for discrete parameters in POST.h5
    :widths: 10 10 5 5 70 
    :header-rows: 1
 
    * - Dataset     
      - Format
-     - Feature
+     - attribute
      - Mandatory
      - Description     
    * - /M1/Mode
