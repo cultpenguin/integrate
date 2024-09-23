@@ -12,11 +12,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
       - name: Install dependencies
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           pip install sphinx sphinx_rtd_theme myst_parser nbsphinx sphinx-gallery
           pip install h5py numpy matplotlib tqdm scipy 
+      - name: Install integrate module 
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
           cd integrate_module
