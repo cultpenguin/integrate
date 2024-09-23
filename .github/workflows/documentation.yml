@@ -22,6 +22,7 @@ jobs:
           git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
           cd integrate_module
           pip install .
+          echo "HEJ"
       - name: Install Pandoc
         run: |
           sudo apt-get update
