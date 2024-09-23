@@ -17,8 +17,10 @@ jobs:
         run: |
           pip install sphinx sphinx_rtd_theme myst_parser nbsphinx sphinx-gallery
           pip install h5py numpy matplotlib tqdm scipy 
+        run: |
           git clone https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
-          pip install git+https://$GH_TOKEN:x-oauth-basic@github.com/cultpenguin/integrate_module.git          
+          cd integrate_module
+          pip install .
       - name: Install Pandoc
         run: |
           sudo apt-get update
