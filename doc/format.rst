@@ -24,6 +24,11 @@ DATA.h5
 =======
 DATA.h5 contains observed data, and its associated geometry. 
 The observed data can be of many types, such as TEM data and well-log data
+
+
+The ID of the observed data, must, for now, be the same as the ID of the prior data. 
+Thus, the observed data in f_data:``D1/`` must refer to the prior data in f_prior:``D1``. 
+
   
   ``Np``: Number of data locations (typically one set data per unique X-Y location)
   
@@ -156,15 +161,15 @@ For discrete data the multinomial distribution can use as likelihhood by setting
      - *
      - The multinomial distribution is used as likelihood model for the data.
    * - /D2/d_obs
-     - [Np,Nclass]
+     - [Np,Nclass,Nm]
      - 
      - *
      - Observed data (class probabilities)
    * - /D2/i_group
-     - [Np,1]
+     - [Np,Nm]
      - 
      - 
-     - Indicates whether the Nd2 data should considered as groups or individually
+     - Indicates whether the Nd2 data should considered as groups or individually.
    * - /D2/i_use
      - [Np,1]
      - 
