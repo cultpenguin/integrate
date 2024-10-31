@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INTEGRATE Case Study example &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="INTEGRATE using data from Daugaard in Matlab" href="../notebooks_matlab/matlab_ex_daugaard.html" />
+    <link rel="prev" title="Notebooks" href="../notebooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#python-notebooks">Python Notebooks</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">INTEGRATE Case Study example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Download-the-data-for-a-specific-case-study">Download the data for a specific case study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Setup-up-the-prior-,-\rho(m,d)">Setup up the prior , <span class="math notranslate nohighlight">\(\rho(m,d)\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Sample-the-posterior-\sigma(\mathbf{m})">Sample the posterior <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-some-statistics-from-\sigma(\mathbf{m})">Plot some statistics from <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#matlab-notebooks">Matlab Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">INTEGRATE Case Study example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/integrate_case_simpleprior.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="INTEGRATE-Case-Study-example">
+<h1>INTEGRATE Case Study example<a class="headerlink" href="#INTEGRATE-Case-Study-example" title="Link to this heading"></a></h1>
+<p>This notebook contains an examples of the simplest use of INTEGRATE, on which tTEM data from various caswe study areas, will be be inverted using simple generic, resistivity only, prior models.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>try:
+    # Check if the code is running in an IPython kernel (which includes Jupyter notebooks)
+    get_ipython()
+    # If the above line doesn&#39;t raise an error, it means we are in a Jupyter environment
+    # Execute the magic commands using IPython&#39;s run_line_magic function
+    get_ipython().run_line_magic(&#39;load_ext&#39;, &#39;autoreload&#39;)
+    get_ipython().run_line_magic(&#39;autoreload&#39;, &#39;2&#39;)
+except:
+    # If get_ipython() raises an error, we are not in a Jupyter environment
+    # # #%load_ext autoreload
+    # # #%autoreload 2
+    pass
+
+import integrate as ig
+import numpy as np
+import os
+import matplotlib.pyplot as plt
+hardcopy=True
+</pre></div>
+</div>
+</div>
+<section id="Download-the-data-for-a-specific-case-study">
+<h2>Download the data for a specific case study<a class="headerlink" href="#Download-the-data-for-a-specific-case-study" title="Link to this heading"></a></h2>
+<p>The following case study areas are available:</p>
+<p>DAUGAARD FANGEL HALD</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>case = &#39;DAUGAARD&#39;
+#case = &#39;FANGEL&#39;
+#case = &#39;HALD&#39;
+
+files = ig.get_case_data(case=case)
+f_data_h5 = files[0]
+file_gex= ig.get_gex_file_from_data(f_data_h5)
+# check that file_gex exists
+if not os.path.isfile(file_gex):
+    print(&quot;file_gex=%s does not exist in the current folder.&quot; % file_gex)
+
+print(&#39;CASE: %s&#39; % case)
+print(&#39;Using hdf5 data file %s with gex file %s&#39; % (f_data_h5,file_gex))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Getting data for case: HALD
+File HALD_AVG.h5 already exists and is identical. Skipping download.
+File TX07_20230731_2x4_RC20-33.gex already exists and is identical. Skipping download.
+File README_HALD already exists and is identical. Skipping download.
+CASE: HALD
+Using hdf5 data file HALD_AVG.h5 with gex file TX07_20230731_2x4_RC20-33.gex
+</pre></div></div>
+</div>
+<section id="Plot-the-geometry-of-the-observed-data">
+<h3>Plot the geometry of the observed data<a class="headerlink" href="#Plot-the-geometry-of-the-observed-data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = ig.plot_data_xy(f_data_h5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_5_0.png" src="../_images/notebooks_integrate_case_simpleprior_5_0.png" />
+</div>
+</div>
+</section>
+<section id="Plot-the-observed-data">
+<h3>Plot the observed data<a class="headerlink" href="#Plot-the-observed-data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ig.plot_data(f_data_h5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+plot_data: Found data set D1
+plot_data: Using data set D1
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_7_1.png" src="../_images/notebooks_integrate_case_simpleprior_7_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Setup-up-the-prior-,-\rho(m,d)">
+<h2>Setup up the prior , <span class="math notranslate nohighlight">\(\rho(m,d)\)</span><a class="headerlink" href="#Setup-up-the-prior-,-\rho(m,d)" title="Link to this heading"></a></h2>
+<p>A lookup table of prior model parameters and corresponding prior data needs to be defined</p>
+<section id="Prior-model-paramegters,-\rho(m):-Setup-the-prior-for-the-model-parameters">
+<h3>Prior model paramegters, <span class="math notranslate nohighlight">\(\rho(m)\)</span>: Setup the prior for the model parameters<a class="headerlink" href="#Prior-model-paramegters,-\rho(m):-Setup-the-prior-for-the-model-parameters" title="Link to this heading"></a></h3>
+<p>In principle and arbitrarily complex prior can be used with INTEGRATE, quantifying information about both discrete and continuous model parameters, and modle parameters describing physical parameters, and geo related parameters. Here, we consider using a simple generic resistivity only prior.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># A1. CONSTRUCT PRIOR MODEL OR USE EXISTING
+N=100000
+RHO_min = 10
+RHO_max = 2500
+RHO_max = 500
+RHO_dist=&#39;log-uniform&#39;
+NLAY_min=4
+NLAY_max=4
+z_max = 90
+
+useP=1
+if useP==1:
+    ## Layered model
+    #f_prior_h5 = ig.prior_model_layered(N=N,lay_dist=&#39;chi2&#39;, NLAY_deg=5, z_max = z_max, RHO_dist=&#39;log-uniform&#39;, RHO_min=RHO_min, RHO_max=RHO_max)
+    #f_prior_h5 = ig.prior_model_layered(N=N,lay_dist=&#39;uniform&#39;, z_max = z_max, NLAY_min=1, NLAY_max=3, RHO_dist=&#39;log-uniform&#39;, RHO_min=RHO_min, RHO_max=RHO_max)
+    f_prior_h5 = ig.prior_model_layered(N=N,lay_dist=&#39;uniform&#39;,
+                                        z_max = z_max,
+                                        NLAY_min=NLAY_min,
+                                        NLAY_max=NLAY_max,
+                                        RHO_dist=RHO_dist,
+                                        RHO_min=RHO_min,
+                                        RHO_max=RHO_max)
+elif useP==2:
+    ## N layer model with increasing thickness
+    f_prior_h5 = ig.prior_model_workbench(N=N,
+                                          RHO_mean=45,
+                                          RHO_std=45,
+                                          RHO_dist=&#39;log-normal&#39;,
+                                          z_max = z_max,
+                                          nlayers=1,
+                                          RHO_min = RHO_min,
+                                          RHO_max = RHO_max)
+    #f_prior_h5 = ig.prior_model_workbench(N=N, z_max= 30, nlayers=20, RHO_min = RHO_min, RHO_max = RHO_max)
+    f_prior_h5 = ig.prior_model_workbench(N=N, z_max = z_max, nlayers=NLAY_max, RHO_dist=RHO_dist, RHO_min = RHO_min, RHO_max = RHO_max)
+
+else:
+    f_prior_h5 = &#39;existing_prior.h5&#39;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving prior model to PRIOR_WB1_N10000_log-normal_R45_45.h5
+Saving prior model to PRIOR_WB4_N10000_log-uniform_R10_2500.h5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ig.plot_prior_stats(f_prior_h5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/mnt/d/PROGRAMMING/integrate_module/integrate/integrate_plot.py:873: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax[0,1].set_xticklabels([&#39;$10^{%3.1f}$&#39;%i for i in ax[0,1].get_xticks()])
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_11_1.png" src="../_images/notebooks_integrate_case_simpleprior_11_1.png" />
+</div>
+</div>
+</section>
+<section id="Prior-data,-\rho(d)">
+<h3>Prior data, <span class="math notranslate nohighlight">\(\rho(d)\)</span><a class="headerlink" href="#Prior-data,-\rho(d)" title="Link to this heading"></a></h3>
+<p>The prior data, i.e. the forwward response of of the realizations of the prior needs to be computed. Here we use only tTEM data, so onæy on type (tTEM) of data is computed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f_prior_data_h5 = ig.prior_data_gaaem(f_prior_h5, file_gex)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+N=10000, N_in=10000
+Creating a copy of PRIOR_WB4_N10000_log-uniform_R10_2500.h5 as PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+ 79%|███████████████████████████████████████████████████████████████▊                 | 123/156 [00:21&lt;00:06,  5.19it/s]
+ 69%|███████████████████████████████████████████████████████▌                         | 107/156 [00:22&lt;00:11,  4.45it/s]
+ 94%|███████████████████████████████████████████████████████████████████████████▊     | 146/156 [00:22&lt;00:01,  8.19it/s]
+ 88%|███████████████████████████████████████████████████████████████████████▋         | 138/156 [00:22&lt;00:03,  4.93it/s]
+ 91%|█████████████████████████████████████████████████████████████████████████▋       | 142/156 [00:23&lt;00:01,  7.73it/s]
+
+ 66%|█████████████████████████████████████████████████████▍                           | 103/156 [00:23&lt;00:12,  4.23it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:23&lt;00:00,  6.71it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:23&lt;00:00,  6.82it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:23&lt;00:00,  6.57it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:24&lt;00:00,  6.45it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:24&lt;00:00,  6.40it/s]
+ 99%|███████████████████████████████████████████████████████████████████████████████▉ | 155/157 [00:24&lt;00:00,  8.42it/s]
+ 81%|█████████████████████████████████████████████████████████████████▉               | 127/156 [00:24&lt;00:04,  6.23it/s]
+
+ 80%|█████████████████████████████████████████████████████████████████                | 126/157 [00:23&lt;00:07,  4.04it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:24&lt;00:00,  6.35it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:24&lt;00:00,  6.46it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:24&lt;00:00,  6.30it/s]
+ 91%|█████████████████████████████████████████████████████████████████████████▋       | 142/156 [00:24&lt;00:02,  4.92it/s]
+ 96%|█████████████████████████████████████████████████████████████████████████████▎   | 149/156 [00:25&lt;00:00,  7.90it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:25&lt;00:00,  6.22it/s]
+ 94%|████████████████████████████████████████████████████████████████████████████▎    | 148/157 [00:24&lt;00:01,  5.68it/s]
+ 76%|█████████████████████████████████████████████████████████████▊                   | 119/156 [00:25&lt;00:07,  4.88it/s]
+
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:25&lt;00:00,  6.19it/s]
+ 95%|████████████████████████████████████████████████████████████████████████████▊    | 149/157 [00:24&lt;00:01,  6.60it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:25&lt;00:00,  6.16it/s]
+ 88%|███████████████████████████████████████████████████████████████████████▋         | 138/156 [00:25&lt;00:02,  6.37it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:25&lt;00:00,  6.12it/s]
+ 99%|███████████████████████████████████████████████████████████████████████████████▉ | 154/156 [00:25&lt;00:00,  6.03it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:25&lt;00:00,  6.17it/s]
+ 90%|█████████████████████████████████████████████████████████████████████████▏       | 141/156 [00:25&lt;00:03,  4.04it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:25&lt;00:00,  6.18it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:25&lt;00:00,  6.05it/s]
+ 87%|██████████████████████████████████████████████████████████████████████▌          | 136/156 [00:26&lt;00:04,  4.97it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.95it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.91it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  9.43it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.92it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  6.01it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:25&lt;00:00,  6.14it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.95it/s]
+
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.94it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.87it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.91it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  5.98it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  5.98it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  5.99it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.83it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.85it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.80it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.83it/s]
+
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.81it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.83it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:26&lt;00:00,  5.79it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  5.98it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:27&lt;00:00,  5.77it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  5.96it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 157/157 [00:26&lt;00:00,  5.85it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:27&lt;00:00,  5.68it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 156/156 [00:27&lt;00:00,  5.66it/s]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Concatenating D_chunks
+D.shape (10000, 40)
+Time elapsed:  29.5 s, for 10000 soundings. 2.952 ms/sounding. 338.8it/s
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Sample-the-posterior-\sigma(\mathbf{m})">
+<h2>Sample the posterior <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span><a class="headerlink" href="#Sample-the-posterior-\sigma(\mathbf{m})" title="Link to this heading"></a></h2>
+<p>The posterior distribution is sampling using the extended rejection sampler.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span>N_use = 10000000
+#f_prior_data_h5 = &#39;gotaelv2_N1000000_fraastad_ttem_Nh280_Nf12.h5&#39;
+updatePostStat =True
+f_post_h5 = ig.integrate_rejection(f_prior_data_h5, f_data_h5, N_use = N_use, parallel=1, updatePostStat=updatePostStat, showInfo=1)
+<br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Running: integrate_rejection.py PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12.h5 HALD_AVG.h5 --autoT 1 --N_use 10000000 --ns 400 -parallel 1 --updatePostStat 1
+psm_ef04f3e6
+File POST_HALD_AVG_PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5 allready exists
+Overwriting...
+nsoundings:10891, N_use:10000, nd:40
+Writing results to  POST_HALD_AVG_PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Using 32 parallel threads.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|████████████████████████████████████████████████████████████████████████████| 10891/10891 [00:27&lt;00:00, 390.55it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+T_av=27.4, Time= 28.2s/10891 soundings ,2.593ms/sounding
+Writing to file:  POST_HALD_AVG_PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12.h5: M1.is_discrete=0
+D1: NOT RECOGNIZED
+M1: CONTINUOUS
+Creating /M1/Mean
+Creating /M1/Median
+Creating /M1/Std
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|███████████████████████████████████████████████████████████████████████████| 10891/10891 [00:02&lt;00:00, 4942.96it/s]
+</pre></div></div>
+</div>
+</section>
+<section id="Plot-some-statistics-from-\sigma(\mathbf{m})">
+<h2>Plot some statistics from <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span><a class="headerlink" href="#Plot-some-statistics-from-\sigma(\mathbf{m})" title="Link to this heading"></a></h2>
+<section id="The-temperature-refer-to-the-annealing-temperature-used-by-the-extended-rejection-sampler,-in-order-to-get-'enough'-realizations.">
+<h3>The temperature refer to the annealing temperature used by the extended rejection sampler, in order to get ‘enough’ realizations.<a class="headerlink" href="#The-temperature-refer-to-the-annealing-temperature-used-by-the-extended-rejection-sampler,-in-order-to-get-'enough'-realizations." title="Link to this heading"></a></h3>
+<p>T=1, implies no anealing has occurred. Higher values of T implies increasingly difficulty of fitting the data within the noise, suggesting either that the lookup table size is too small and/or that the prior is not consistent with the data.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plot the Temperature used for inversion
+ig.plot_T_EV(f_post_h5, pl=&#39;T&#39;)
+ig.plot_T_EV(f_post_h5, pl=&#39;EV&#39;)
+ig.plot_T_EV(f_post_h5, pl=&#39;ND&#39;)
+#
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1, 100)
+EV_min=-100.000000, EV_max=0.000000
+[18 20 20 ... 14 14 14]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_18_2.png" src="../_images/notebooks_integrate_case_simpleprior_18_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_18_3.png" src="../_images/notebooks_integrate_case_simpleprior_18_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_18_4.png" src="../_images/notebooks_integrate_case_simpleprior_18_4.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import h5py
+with h5py.File(f_data_h5,&#39;r&#39;) as f_prior:
+    nd=f_prior[&#39;UTMX&#39;].shape[0]
+
+
+i1 = np.linspace(0,nd-1,4).astype(int)
+for i in i1:
+    ig.plot_data_prior_post(f_post_h5, i_plot = i)
+    #ig.plot_data_prior_post(f_post_h5, i_plot = 1199)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+20.86428040172214
+42.380830760173524
+37.07539694990765
+6.6025901037751344
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_19_1.png" src="../_images/notebooks_integrate_case_simpleprior_19_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_19_2.png" src="../_images/notebooks_integrate_case_simpleprior_19_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_19_3.png" src="../_images/notebooks_integrate_case_simpleprior_19_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_19_4.png" src="../_images/notebooks_integrate_case_simpleprior_19_4.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ig.plot_profile(f_post_h5, i1=0, i2=np.min([2000,nd]), cmap=&#39;jet&#39;, hardcopy=hardcopy)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+Plot profile for all model parameters
+1
+Plotting profile /M1 from POST_HALD_AVG_PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+[10, 500]
+jet
+[10, 500]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/mnt/d/PROGRAMMING/integrate_module/integrate/integrate_plot.py:564: UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh.
+  im1 = ax[0].pcolormesh(ID[:,i1:i2], ZZ[:,i1:i2], Mean[:,i1:i2],
+/mnt/d/PROGRAMMING/integrate_module/integrate/integrate_plot.py:573: UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh.
+  im2 = ax[1].pcolormesh(ID[:,i1:i2], ZZ[:,i1:i2], Median[:,i1:i2],
+/mnt/d/PROGRAMMING/integrate_module/integrate/integrate_plot.py:583: UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh.
+  im3 = ax[2].pcolormesh(ID[:,i1:i2], ZZ[:,i1:i2], Std[:,i1:i2],
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_20_2.png" src="../_images/notebooks_integrate_case_simpleprior_20_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for iz in range(0,z_max,5):
+    ig.plot_feature_2d(f_post_h5,im=1,iz=iz,key=&#39;Mean&#39;, title_text = &#39;XX&#39;, cmap=&#39;jet&#39;, s=12, vmin=10, vmax=100, hardcopy=hardcopy)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Plotting Feature 0 from /M1/Mean
+(10891,)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_case_simpleprior_21_1.png" src="../_images/notebooks_integrate_case_simpleprior_21_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Plotting Feature 5 from /M1/Mean
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[12], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> iz <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">range</span>(<span style="color: rgb(98,98,98)">0</span>,<span style="color: rgb(98,98,98)">50</span>,<span style="color: rgb(98,98,98)">5</span>):
+<span class="ansi-green-fg">----&gt; 2</span>     <span class="ansi-yellow-bg">ig</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">plot_feature_2d</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">f_post_h5</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">im</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">iz</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">iz</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Mean</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">title_text</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">XX</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">cmap</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">jet</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">s</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">12</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">vmin</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">10</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">vmax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1000</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">hardcopy</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">hardcopy</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/mnt/d/PROGRAMMING/integrate_module/integrate/integrate_plot.py:141</span>, in <span class="ansi-cyan-fg">plot_feature_2d</span><span class="ansi-blue-fg">(f_post_h5, key, i1, i2, im, iz, uselog, title_text, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    139</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> dstr <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> f_post:
+<span class="ansi-green-intense-fg ansi-bold">    140</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> key <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> f_post[dstr]<span style="color: rgb(98,98,98)">.</span>keys():
+<span class="ansi-green-fg">--&gt; 141</span>         D <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">f_post</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">dstr</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">iz</span><span class="ansi-yellow-bg">]</span>[:]
+<span class="ansi-green-intense-fg ansi-bold">    142</span>         <span style="color: rgb(0,135,0)">print</span>(D<span style="color: rgb(98,98,98)">.</span>shape)
+<span class="ansi-green-intense-fg ansi-bold">    143</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> uselog<span style="color: rgb(98,98,98)">==</span><span style="color: rgb(98,98,98)">1</span>:
+
+File <span class="ansi-green-fg">h5py/_objects.pyx:54</span>, in <span class="ansi-cyan-fg">h5py._objects.with_phil.wrapper</span><span class="ansi-blue-fg">()</span>
+
+File <span class="ansi-green-fg">h5py/_objects.pyx:55</span>, in <span class="ansi-cyan-fg">h5py._objects.with_phil.wrapper</span><span class="ansi-blue-fg">()</span>
+
+File <span class="ansi-green-fg">~/integrate/lib/python3.10/site-packages/h5py/_hl/dataset.py:758</span>, in <span class="ansi-cyan-fg">Dataset.__getitem__</span><span class="ansi-blue-fg">(self, args, new_dtype)</span>
+<span class="ansi-green-intense-fg ansi-bold">    756</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_fast_read_ok <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> (new_dtype <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>):
+<span class="ansi-green-intense-fg ansi-bold">    757</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 758</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_fast_reader</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">read</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    759</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>:
+<span class="ansi-green-intense-fg ansi-bold">    760</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">pass</span>  <span style="color: rgb(95,135,135)"># Fall back to Python read pathway below</span>
+
+File <span class="ansi-green-fg">h5py/_selector.pyx:361</span>, in <span class="ansi-cyan-fg">h5py._selector.Reader.read</span><span class="ansi-blue-fg">()</span>
+
+File <span class="ansi-green-fg">h5py/_selector.pyx:151</span>, in <span class="ansi-cyan-fg">h5py._selector.Selector.apply_args</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">IndexError</span>: Index (5) out of range for (0-3)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ig.post_to_csv(f_post_h5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Writing to POST_HALD_AVG_PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1_M1.csv
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;POST_HALD_AVG_PRIOR_WB4_N10000_log-uniform_R10_2500_TX07_20230731_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1_M1.csv&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks.html" class="btn btn-neutral float-left" title="Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../notebooks_matlab/matlab_ex_daugaard.html" class="btn btn-neutral float-right" title="INTEGRATE using data from Daugaard in Matlab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
