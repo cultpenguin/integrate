@@ -25,6 +25,13 @@ Forward modeling
 Probabilistic Inversion
    An implementation of the 1D probabilistic localized inversion using the **Localized Rejection Sampler** [HANSEN2021]_ and **Machine Learning** [HANSENFINLAY2022]_.
 
+   Features
+      - Fast probabilistic inversion with informed prior models
+      - Multiple Data Types
+      - Multiple Forward Models
+      - Joint inversion 
+
+
 Analysis
    Tools for visual illustrations of the results will be developed, such as 1D, 2D cross-sections, 3D rendering, as well as uncertainty quantification.
    
