@@ -76,8 +76,20 @@ The attribute ``D1/noise_model`` is mandatory for all data types, and describes 
      - *
      - *
      - A string describing the noise model used for the data. 
+   * - /D1/id_use
+     - [integer]
+     - 
+     - 
+     - The prior data if A string describing the noise model used for the data. If not set it will the same id as the data id 
+   * - /D1/i_use
+     - [NP,1] int [0/1]
+     - 
+     - 
+     - Determines wether a data point should be used or not. All data are used by default
 
 The format of the observed data, and the associate uncertainty, depends on the type of data, and the choice of noise model.
+
+See the function :func:`integrate.load_data()` for an example on how read DATA.h5 files.
 
 """""""""""""""""""""""""""""""""
 Gaussian noise  - continuous data
