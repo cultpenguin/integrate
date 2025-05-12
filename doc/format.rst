@@ -218,12 +218,17 @@ PRIOR.h5 contains ``N`` realizations of a prior model (represented as potentiall
      - 
      - *
      - N realizations of model parameter 1, 
-       each consisting of Nm1 model parameters
+       each consisting of Nm1 model param1eters
    * - /M1/x
      - [nm]
      - *
      - *
-     - Array of z values (top of layer) for M1
+     - Array of values describing each value in M1 (e.g. depth to layer)
+   * - /M1/name
+     - [string]
+     - *
+     - 
+     - Name of model parameter /M1
    * - /M1/is_discrete
      - [nm]
      - *
