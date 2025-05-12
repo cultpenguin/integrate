@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>integrate_io &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="integrate_plot" href="integrate_plot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="integrate.html">integrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate_plot.html">integrate_plot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">integrate_io</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">integrate_io</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/integrate_io.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integrate-io">
+<h1>integrate_io<a class="headerlink" href="#integrate-io" title="Link to this heading"></a></h1>
+<p>Functions related to IO in the INTEGRATE module.</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">check_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data.h5'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Check and update INTEGRATE data in an HDF5 file.
+This function checks for the presence of specific datasets (‘UTMX’, ‘UTMY’, ‘LINE’, ‘ELEVATION’) 
+in the given HDF5 file. If any of these datasets are missing, it creates them using the provided 
+keyword arguments or default values.
+:param f_data_h5: Path to the HDF5 file to check and update. Default is ‘data.h5’.
+:type f_data_h5: str
+:param kwargs: Additional keyword arguments to specify dataset values and control verbosity.
+:keyword showInfo: Verbosity level. If greater than 0, prints information messages. Default is 0.
+:type showInfo: int, optional
+:keyword UTMX: Array of UTMX values. If not provided, attempts to read from the file or generates default values.
+:type UTMX: array-like, optional
+:keyword UTMY: Array of UTMY values. Default is an array of zeros with the same length as UTMX.
+:type UTMY: array-like, optional
+:keyword LINE: Array of LINE values. Default is an array of ones with the same length as UTMX.
+:type LINE: array-like, optional
+:keyword ELEVATION: Array of ELEVATION values. Default is an array of zeros with the same length as UTMX.
+:type ELEVATION: array-like, optional
+:raises KeyError: If the ‘D1/d_obs’ dataset is not found in the file and ‘UTMX’ is not provided.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">copy_hdf5_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loadToMemory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Copy the contents of an HDF5 file to another HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_filename</strong> (<em>str</em>) – The path to the input HDF5 file.</p></li>
+<li><p><strong>output_filename</strong> (<em>str</em>) – The path to the output HDF5 file.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of elements to copy from each dataset. If not specified, all elements will be copied.</p></li>
+<li><p><strong>loadToMemory</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to load the entire dataset to memory before slicing. Default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_checksum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Download a file from a URL to a specified directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL of the file to download.</p></li>
+<li><p><strong>download_dir</strong> (<em>str</em>) – The directory to save the downloaded file.</p></li>
+<li><p><strong>use_checksum</strong> (<em>bool</em>) – Whether to verify the file checksum after download.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">download_file_old</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Download a file from a URL to a specified directory (old version).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL of the file to download.</p></li>
+<li><p><strong>download_dir</strong> (<em>str</em>) – The directory to save the downloaded file.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">file_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate the MD5 checksum of a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – The path to the file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The MD5 checksum of the file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">get_case_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DAUGAARD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loadAll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loadType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filelist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Get case data for a specific case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>case</strong> (<em>str</em>) – The case name. Default is ‘DAUGAARD’. Options are ‘DAUGAARD’, ‘GRUSGRAV’, ‘FANGEL’, ‘HALD’, ‘ESBJERG’, and ‘OERUM.</p></li>
+<li><p><strong>loadAll</strong> (<em>bool</em>) – Whether to load all files for the case. Default is False.</p></li>
+<li><p><strong>loadType</strong> (<em>str</em>) – The type of files to load. Options are ‘’, ‘prior’, ‘prior_data’, ‘post’, and ‘inout’.</p></li>
+<li><p><strong>filelist</strong> (<em>list</em>) – A list of files to load. Default is an empty list.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of file names for the case.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Retrieve geometry information from an HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>f_data_h5</strong> (<em>str</em>) – The path to the HDF5 file.</p>
+</dd>
+</dl>
+<p>If a posterior hdf5 file is passed, the the corresponding data files is read from the ‘h5_data’ attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing the X, Y, LINE, and ELEVATION arrays.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>IOError</strong> – If the HDF5 file cannot be opened or read.</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_geometry</span><span class="p">(</span><span class="s1">&#39;/path/to/file.h5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">LINE</span><span class="p">,</span> <span class="n">ELEVATION</span> <span class="o">=</span> <span class="n">get_geometry</span><span class="p">(</span><span class="s1">&#39;/path/to/file.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">get_gex_file_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Retrieves the ‘gex’ attribute from the specified HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_data_h5</strong> (<em>str</em>) – The path to the HDF5 file.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the dataset within the HDF5 file. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value of the ‘gex’ attribute if found, otherwise an empty string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">gex_to_stm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_gex</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Convert a GEX file to STM files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_gex</strong> (<em>str</em><em> or </em><em>dict</em>) – The path to the GEX file or a GEX dictionary.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments to be passed to the write_stm_files function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the STM files and the GEX dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the file_gex argument is not a string or a dictionary.</p>
+</dd>
+<dt class="field-odd">Notes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>If the file_gex argument is a string, it is assumed to be the path to the GEX file, which will be read using the read_gex function.</p></li>
+<li><p>If the file_gex argument is a dictionary, it is assumed to be a GEX dictionary.</p></li>
+<li><p>The write_stm_files function is called to generate the STM files based on the GEX data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">hdf5_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Scans an HDF5 file and prints information about datasets (including their size) and attributes.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_path (str): The path to the HDF5 file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">merge_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_gex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_merged_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Merge multiple data files into a single HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_data</strong> (<em>list</em>) – List of input data files to merge.</p></li>
+<li><p><strong>f_gex</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to geometry exchange file, by default ‘’.</p></li>
+<li><p><strong>delta_line</strong> (<em>int</em><em>, </em><em>optional</em>) – Line number increment for each merged file, by default 0.</p></li>
+<li><p><strong>f_data_merged_h5</strong> (<em>str</em><em>, </em><em>optional</em>) – Output merged HDF5 file path, by default derived from f_gex.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filename of the merged HDF5 file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If f_data is not a list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">merge_posterior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_h5_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_post_merged_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Merge multiple posterior HDF5 files and their corresponding data HDF5 files into a single posterior HDF5 file.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>f_post_h5_files<span class="classifier">list of str</span></dt><dd><p>List of file paths to the posterior HDF5 files to be merged.</p>
+</dd>
+<dt>f_data_h5_files<span class="classifier">list of str</span></dt><dd><p>List of file paths to the data HDF5 files corresponding to the posterior files.</p>
+</dd>
+<dt>f_post_merged_h5<span class="classifier">str, optional</span></dt><dd><p>File path for the merged posterior HDF5 file. If not provided, a default name will be generated.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>array</dt><dd><p>[0] File path of the merged posterior HDF5 file.
+[1] File path of the merged data HDF5 file.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the length of <cite>f_data_h5_files</cite> is not the same as <cite>f_post_h5_files</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<p>The function assumes that the <cite>merge_data</cite> function from the <cite>ig</cite> module is available for merging data files.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">post_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/M1'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Convert a post-processing HDF5 file to a CSV file containing XYZ data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the post-processing HDF5 file. If not provided, the last used file will be used.</p></li>
+<li><p><strong>Mstr</strong> (<em>str</em>) – The dataset path within the HDF5 file. Default is ‘/M1’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the generated CSV file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>KeyError</strong> – If the specified dataset path does not exist in the HDF5 file.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If the specified HDF5 file does not exist.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">read_gex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_gex</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Read a GEX file and parse its contents into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_gex</strong> (<em>str</em>) – The path to the GEX file.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments for customization.</p></li>
+<li><p><strong>Nhank</strong> (<em>int</em>) – The number of Hankel transform abscissae for both low and high frequency windows.</p></li>
+<li><p><strong>Nfreq</strong> (<em>int</em>) – The number of frequencies per decade for both low and high frequency windows.</p></li>
+<li><p><strong>Ndig</strong> (<em>int</em>) – The number of digits for waveform digitizing frequency.</p></li>
+<li><p><strong>showInfo</strong> (<em>int</em>) – Flag to control the display of information. Default is 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the parsed contents of the GEX file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the specified GEX file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">write_data_gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D_obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data.h5'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write Gaussian noise data to an HDF5 file.
+This function writes observed data and its associated Gaussian noise standard deviations
+to an HDF5 file. It also creates necessary datasets if they do not exist and handles
+optional attributes.
+Parameters
+———-
+D_obs : numpy.ndarray</p>
+<blockquote>
+<div><p>Observed data array.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>D_std<span class="classifier">list, optional</span></dt><dd><p>Standard deviation of the observed data. If not provided, it is calculated using <cite>d_std</cite>.</p>
+</dd>
+<dt>d_std<span class="classifier">list, optional</span></dt><dd><p>Default standard deviation multiplier. Used if <cite>D_std</cite> is not provided. Default is 0.01.</p>
+</dd>
+<dt>Cd<span class="classifier">list, optional</span></dt><dd><p>Covariance data. If provided, it is written to the file.</p>
+</dd>
+<dt>id<span class="classifier">int, optional</span></dt><dd><p>Identifier for the dataset group. Default is 1.</p>
+</dd>
+<dt>is_log<span class="classifier">int, optional</span></dt><dd><p>Flag indicating if the data is in logarithmic scale. Default is 0.</p>
+</dd>
+<dt>f_data_h5<span class="classifier">str, optional</span></dt><dd><p>Path to the HDF5 file. Default is ‘data.h5’.</p>
+</dd>
+<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs<span class="classifier">dict</span></dt><dd><p>Additional keyword arguments:
+- showInfo (int): Level of verbosity for printing information. Default is 0.
+- f_gex (str): Name of the GEX file associated with the data. Default is an empty string.</p>
+</dd>
+</dl>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>str</dt><dd><p>Path to the HDF5 file.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Notes<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>If <cite>D_std</cite> is not provided, it is calculated as <cite>d_std * D_obs</cite>.</p></li>
+<li><p>The function ensures that the datasets ‘UTMX’, ‘UTMY’, ‘LINE’, and ‘ELEVATION’ exist in the file.</p></li>
+<li><p>If a group with the name ‘D{id}’ exists, it is removed before adding the new data.</p></li>
+<li><p>The function writes attributes ‘noise_model’ and ‘is_log’ to the dataset group.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">write_data_multinomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D_obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data.h5'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Writes observed data to an HDF5 file in a specified group with a multinomial noise model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D_obs</strong> (<em>numpy.ndarray</em>) – The observed data array to be written to the file.</p></li>
+<li><p><strong>id</strong> (<em>list</em><em>, </em><em>optional</em>) – The ID of the group to write the data to. If not provided, the function will find the next available ID.</p></li>
+<li><p><strong>id_use</strong> (<em>list</em><em>, </em><em>optional</em>) – The ID of PRIOR data the refer to this data. If not set, id_use=id</p></li>
+<li><p><strong>f_data_h5</strong> (<em>str</em><em>, </em><em>optional</em>) – The path to the HDF5 file where the data will be written. Default is ‘data.h5’.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The path to the HDF5 file where the data was written.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_io.</span></span><span class="sig-name descname"><span class="pre">write_stm_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">GEX</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write STM (System Transfer Matrix) files based on the provided GEX system data file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>GEX</strong> (<em>dict</em>) – The GEX data containing the system information.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments for customization.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of file paths for the generated STM files.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="integrate_plot.html" class="btn btn-neutral float-left" title="integrate_plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

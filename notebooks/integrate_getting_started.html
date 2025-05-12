@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started with INTEGRATE &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributions" href="../contributions.html" />
+    <link rel="prev" title="Notebooks" href="../notebooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#getting-started">Getting Started</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Getting started with INTEGRATE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.-Setup-the-prior-model-(\rho(\mathbf{m},\mathbf{d})">1. Setup the prior model (<span class="math notranslate nohighlight">\(\rho(\mathbf{m},\mathbf{d})\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Sample-the-posterior-\sigma(\mathbf{m})">Sample the posterior <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#noise">Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#daugaard-case">Daugaard Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#synthetic-case">Synthetic Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#other">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">Getting started with INTEGRATE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/integrate_getting_started.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Getting-started-with-INTEGRATE">
+<h1>Getting started with INTEGRATE<a class="headerlink" href="#Getting-started-with-INTEGRATE" title="Link to this heading"></a></h1>
+<p>This notebook contains a simple example of geeting started with INTEGRATE</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Check if the code is running in an IPython kernel (which includes Jupyter notebooks)</span>
+    <span class="n">get_ipython</span><span class="p">()</span>
+    <span class="c1"># If the above line doesn&#39;t raise an error, it means we are in a Jupyter environment</span>
+    <span class="c1"># Execute the magic commands using IPython&#39;s run_line_magic function</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;load_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;autoreload&#39;</span><span class="p">)</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;autoreload&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># If get_ipython() raises an error, we are not in a Jupyter environment</span>
+    <span class="c1"># # # #%load_ext autoreload</span>
+    <span class="c1"># # # #%autoreload 2</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">integrate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ig</span>
+<span class="c1"># check if parallel computations can be performed</span>
+<span class="n">parallel</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">use_parallel</span><span class="p">(</span><span class="n">showInfo</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Notebook detected. Parallel processing is OK
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="o">=</span> <span class="s1">&#39;DAUGAARD&#39;</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_case_data</span><span class="p">(</span><span class="n">case</span><span class="o">=</span><span class="n">case</span><span class="p">)</span>
+<span class="n">f_data_h5</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">f_data_h5</span> <span class="o">=</span> <span class="s1">&#39;DAUGAARD_AVG.h5&#39;</span>
+<span class="n">file_gex</span><span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_gex_file_from_data</span><span class="p">(</span><span class="n">f_data_h5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using data file: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f_data_h5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using GEX file: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_gex</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Getting data for case: DAUGAARD
+--&gt; Got data for case: DAUGAARD
+Using data file: DAUGAARD_AVG.h5
+Using GEX file: TX07_20231016_2x4_RC20-33.gex
+</pre></div></div>
+</div>
+<section id="1.-Setup-the-prior-model-(\rho(\mathbf{m},\mathbf{d})">
+<h2>1. Setup the prior model (<span class="math notranslate nohighlight">\(\rho(\mathbf{m},\mathbf{d})\)</span><a class="headerlink" href="#1.-Setup-the-prior-model-(\rho(\mathbf{m},\mathbf{d})" title="Link to this heading"></a></h2>
+<p>In this example a simple layered prior model will be considered</p>
+<section id="1a.-first,-a-sample-of-the-prior-model-parameters,-\rho(\mathbf{m}),-will-be-generated">
+<h3>1a. first, a sample of the prior model parameters, <span class="math notranslate nohighlight">\(\rho(\mathbf{m})\)</span>, will be generated<a class="headerlink" href="#1a.-first,-a-sample-of-the-prior-model-parameters,-\rho(\mathbf{m}),-will-be-generated" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="o">=</span><span class="mi">10000</span>
+<span class="c1"># Layered model</span>
+<span class="n">f_prior_h5</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">prior_model_layered</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">lay_dist</span><span class="o">=</span><span class="s1">&#39;chi2&#39;</span><span class="p">,</span> <span class="n">NLAY_deg</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">RHO_min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">RHO_max</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+
+<span class="c1"># Plot some summary statistics of the prior model</span>
+<span class="n">ig</span><span class="o">.</span><span class="n">plot_prior_stats</span><span class="p">(</span><span class="n">f_prior_h5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_6_1.png" src="../_images/notebooks_integrate_getting_started_6_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_6_2.png" src="../_images/notebooks_integrate_getting_started_6_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_6_3.png" src="../_images/notebooks_integrate_getting_started_6_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_6_4.png" src="../_images/notebooks_integrate_getting_started_6_4.png" />
+</div>
+</div>
+</section>
+<section id="1b.-Then,-a-corresponding-sample-of-\rho(\mathbf{d}),-will-be-generated">
+<h3>1b. Then, a corresponding sample of <span class="math notranslate nohighlight">\(\rho(\mathbf{d})\)</span>, will be generated<a class="headerlink" href="#1b.-Then,-a-corresponding-sample-of-\rho(\mathbf{d}),-will-be-generated" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_prior_data_h5</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">prior_data_gaaem</span><span class="p">(</span><span class="n">f_prior_h5</span><span class="p">,</span> <span class="n">file_gex</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span> <span class="n">showInfo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ncpu</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+prior_data_gaaem: Using 64 parallel threads.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Time elapsed:  14.1 s, for 10000 soundings. 1.405 ms/sounding. 711.6it/s
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Time elapsed:  16.1 s, for 10000 soundings. 1.612 ms/sounding. 620.3it/s
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Sample-the-posterior-\sigma(\mathbf{m})">
+<h2>Sample the posterior <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span><a class="headerlink" href="#Sample-the-posterior-\sigma(\mathbf{m})" title="Link to this heading"></a></h2>
+<p>The posterior distribution is sampling using the extended rejection sampler.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_use</span> <span class="o">=</span> <span class="n">N</span>
+<span class="n">f_post_h5</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">integrate_rejection</span><span class="p">(</span><span class="n">f_prior_data_h5</span><span class="p">,</span>
+                                   <span class="n">f_data_h5</span><span class="p">,</span>
+                                   <span class="n">N_use</span> <span class="o">=</span> <span class="n">N_use</span><span class="p">,</span>
+                                   <span class="n">showInfo</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                   <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+File POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5 allready exists
+Overwriting...
+&lt;--INTEGRATE_REJECTION--&gt;
+f_prior_h5=PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12.h5
+f_data_h5=DAUGAARD_AVG.h5
+f_post_h5=POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+All done
+T_av=120.6, Time= 11.1s/11693 soundings , 1.0ms/sounding, 1049.0it/s
+D1: NOT RECOGNIZED
+M1: CONTINUOUS
+nm=90, nsounding=11693, nr=400
+M_mean.shape=(11693, 90)
+Creating /M1/Mean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M1/Median in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M1/Std in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M1/LogMean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+M2: CONTINUOUS
+nm=1, nsounding=11693, nr=400
+M_mean.shape=(11693, 1)
+Creating /M2/Mean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M2/Median in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M2/Std in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M2/LogMean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+All done
+T_av=121.0, Time= 17.5s/11693 soundings , 1.5ms/sounding, 667.1it/s
+D1: NOT RECOGNIZED
+M1: CONTINUOUS
+nm=90, nsounding=11693, nr=400
+M_mean.shape=(11693, 90)
+Creating /M1/Mean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M1/Median in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M1/Std in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M1/LogMean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+M2: CONTINUOUS
+nm=1, nsounding=11693, nr=400
+M_mean.shape=(11693, 1)
+Creating /M2/Mean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M2/Median in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M2/Std in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+Creating /M2/LogMean in POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1.h5
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is typically done after the inversion</span>
+<span class="c1"># ig.integrate_posterior_stats(f_post_h5)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<section id="Plot-some-statistic-from-\sigma(\mathbf{m})">
+<h3>Plot some statistic from <span class="math notranslate nohighlight">\(\sigma(\mathbf{m})\)</span><a class="headerlink" href="#Plot-some-statistic-from-\sigma(\mathbf{m})" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ig</span><span class="o">.</span><span class="n">plot_data_prior_post</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span> <span class="n">i_plot</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ig</span><span class="o">.</span><span class="n">plot_data_prior_post</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span> <span class="n">i_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_13_0.png" src="../_images/notebooks_integrate_getting_started_13_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_13_1.png" src="../_images/notebooks_integrate_getting_started_13_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the Temperature used for inversion</span>
+<span class="n">ig</span><span class="o">.</span><span class="n">plot_T_EV</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span> <span class="n">pl</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<span class="c1"># Plot the evidnence (prior likelihood) estimated as part of inversion</span>
+<span class="n">ig</span><span class="o">.</span><span class="n">plot_T_EV</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span> <span class="n">pl</span><span class="o">=</span><span class="s1">&#39;EV&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_14_0.png" src="../_images/notebooks_integrate_getting_started_14_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_14_1.png" src="../_images/notebooks_integrate_getting_started_14_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ig</span><span class="o">.</span><span class="n">plot_profile</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span> <span class="n">i1</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">i2</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">im</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_15_0.png" src="../_images/notebooks_integrate_getting_started_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="c1"># Plot a 2D feature: Resistivity in layer 10</span>
+<span class="n">ig</span><span class="o">.</span><span class="n">plot_feature_2d</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">im</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">iz</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;Median&#39;</span><span class="p">,</span> <span class="n">uselog</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#ig.plot_feature_2d(f_post_h5,im=1,iz=80,key=&#39;Median&#39;)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Plot a 2D feature: The number of layers</span>
+    <span class="n">ig</span><span class="o">.</span><span class="n">plot_feature_2d</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">,</span><span class="n">im</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">iz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;Median&#39;</span><span class="p">,</span> <span class="n">title_text</span> <span class="o">=</span> <span class="s1">&#39;Number of layers&#39;</span><span class="p">,</span> <span class="n">uselog</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_integrate_getting_started_16_0.png" src="../_images/notebooks_integrate_getting_started_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_csv</span><span class="p">,</span> <span class="n">f_point_csv</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">post_to_csv</span><span class="p">(</span><span class="n">f_post_h5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Writing to POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1_M1.csv
+----------------------------------------------------
+Creating point data set: Median
+Creating point data set: Mean
+Creating point data set: Std
+- saving to : POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1_M1_point.csv
+Creating point data set: Mean
+Creating point data set: Std
+- saving to : POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1_M1_point.csv
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N10000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu10000_aT1_M1.csv&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the CSV file</span>
+<span class="c1">#f_point_csv = &#39;POST_DAUGAARD_AVG_PRIOR_CHI2_NF_3_log-uniform_N100000_TX07_20231016_2x4_RC20-33_Nh280_Nf12_Nu100000_aT1_M1_point.csv&#39;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f_point_csv</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Z</th>
+      <th>LINE</th>
+      <th>Median</th>
+      <th>Mean</th>
+      <th>Std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>543822.9</td>
+      <td>6176069.6</td>
+      <td>58.82</td>
+      <td>140.0</td>
+      <td>19.942118</td>
+      <td>76.795006</td>
+      <td>0.417414</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>543822.9</td>
+      <td>6176069.6</td>
+      <td>57.82</td>
+      <td>140.0</td>
+      <td>19.043940</td>
+      <td>28.264925</td>
+      <td>0.191139</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>543822.9</td>
+      <td>6176069.6</td>
+      <td>56.82</td>
+      <td>140.0</td>
+      <td>18.328579</td>
+      <td>23.591038</td>
+      <td>0.141469</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>543822.9</td>
+      <td>6176069.6</td>
+      <td>55.82</td>
+      <td>140.0</td>
+      <td>18.100595</td>
+      <td>22.951324</td>
+      <td>0.136016</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>543822.9</td>
+      <td>6176069.6</td>
+      <td>54.82</td>
+      <td>140.0</td>
+      <td>18.100595</td>
+      <td>19.868954</td>
+      <td>0.103124</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Pyvista to plot X,Y,Z,Median</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="kn">import</span> <span class="n">examples</span>
+<span class="c1">#pv.set_jupyter_backend(&#39;trame&#39;)</span>
+<span class="n">pv</span><span class="o">.</span><span class="n">set_plot_theme</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Median&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Median&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">)]</span>
+<span class="c1">#filtered_df = df[(df[&#39;LINE&#39;] &gt; 1000) &amp; (df[&#39;LINE&#39;] &lt; 1400) ]</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="p">[[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;Mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:])</span>
+<span class="n">opacity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;Median&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="c1">#p.add_points(points, render_points_as_spheres=True, point_size=3, scalars=median, cmap=&#39;jet&#39;, opacity=opacity)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">render_points_as_spheres</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scalars</span><span class="o">=</span><span class="n">median</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hsv&#39;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show_grid</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/tmeha/integrate/lib/python3.11/site-packages/pyvista/jupyter/notebook.py:37: UserWarning: Failed to use notebook backend:
+
+cannot import name &#39;vtk&#39; from &#39;trame.widgets&#39; (/home/tmeha/integrate/lib/python3.11/site-packages/trame/widgets/__init__.py)
+
+Falling back to a static output.
+  warnings.warn(
+ERROR:root:Cannot create GLX context.  Aborting.
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib/dri/swrast_dri.so: cannot open shared object file: No such file or directory (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: swrast
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks.html" class="btn btn-neutral float-left" title="Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../contributions.html" class="btn btn-neutral float-right" title="Contributions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

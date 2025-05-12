@@ -1,0 +1,1080 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>integrate &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="integrate_plot" href="integrate_plot.html" />
+    <link rel="prev" title="Modules" href="../modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">integrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate_plot.html">integrate_plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate_io.html">integrate_io</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">integrate</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/integrate.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integrate">
+<h1>integrate<a class="headerlink" href="#integrate" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">class_id_to_idx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Convert class identifiers to indices.</p>
+<p>This function takes an array of class identifiers and converts them to 
+corresponding indices. If no class identifiers are provided, it will 
+automatically determine the unique class identifiers from the input array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D</strong> – numpy.ndarray
+Array containing class identifiers.</p></li>
+<li><p><strong>class_id</strong> – numpy.ndarray, optional
+Array of unique class identifiers. If None, unique class identifiers 
+will be determined from the input array <cite>D</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple
+A tuple containing:
+- D_idx (numpy.ndarray): Array with class identifiers converted to indices.
+- class_id (numpy.ndarray): Array of unique class identifiers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">cleanup_shared_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shm_objects</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Clean up shared memory segments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">comb_cprob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pAgB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pAgC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Combine conditional probabilities based on permanence of updating ratios.</p>
+<p>This function implements the probability combination method described in 
+Journel’s “An Alternative to Traditional Data Independence Hypotheses” 
+(Math Geology, 2004).</p>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pA<span class="classifier">array_like</span></dt><dd><p>Probability of event A</p>
+</dd>
+<dt>pAgB<span class="classifier">array_like</span></dt><dd><p>Conditional probability of A given B</p>
+</dd>
+<dt>pAgC<span class="classifier">array_like</span></dt><dd><p>Conditional probability of A given C</p>
+</dd>
+<dt>tau<span class="classifier">float, optional</span></dt><dd><p>Combination parameter controlling the ratio permanence (default=1.0)</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns:<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ndarray</dt><dd><p>Combined conditional probability Prob(A|B,C)</p>
+</dd>
+</dl>
+</section>
+<section id="references">
+<h2>References:<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p>Journel, An Alternative to Traditional Data Independence Hypotheses, 
+Mathematical Geology, 2002</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">create_shared_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Create shared memory segments for arrays.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate the entropy of a discrete probability distribution.</p>
+<p>The entropy is calculated using the formula:
+H(P) = -sum(P_i * log_b(P_i))</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>P<span class="classifier">numpy.ndarray</span></dt><dd><p>Probability distribution. Can be a 1D or 2D array.
+If 2D, each row represents a different distribution.</p>
+</dd>
+<dt>base<span class="classifier">int, optional</span></dt><dd><p>The logarithm base to use. If None, uses the number of elements
+in the probability distribution (P.shape[1]). Default is None.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>The entropy value(s). If input P is 2D, returns an array with
+entropy for each row distribution.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Input probabilities are assumed to be normalized (sum to 1)</p></li>
+<li><p>Zero probabilities are handled by numpy’s log function</p></li>
+<li><p>For 2D input, entropy is calculated row-wise</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entropy</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entropy</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="go">array([1.0, 0.469])</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">forward_gaaem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([],</span> <span class="pre">dtype=float64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([],</span> <span class="pre">dtype=float64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GEX</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_gex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([],</span> <span class="pre">dtype=float64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stmfiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform forward modeling using the <strong>GAAEM</strong> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>C</strong> (<em>numpy.ndarray</em><em>, </em><em>optional</em>) – Conductivity array, defaults to np.array(())</p></li>
+<li><p><strong>thickness</strong> (<em>numpy.ndarray</em><em>, </em><em>optional</em>) – Thickness array, defaults to np.array(())</p></li>
+<li><p><strong>GEX</strong> (<em>dict</em><em>, </em><em>optional</em>) – GEX dictionary, defaults to {}</p></li>
+<li><p><strong>file_gex</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to GEX file, defaults to ‘’</p></li>
+<li><p><strong>stmfiles</strong> (<em>list</em><em>, </em><em>optional</em>) – List of STM files, defaults to []</p></li>
+<li><p><strong>tx_height</strong> (<em>numpy.ndarray</em><em>, </em><em>optional</em>) – Transmitter height array, defaults to np.array(())</p></li>
+<li><p><strong>showtime</strong> – Flag to display execution time, defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">forward_gaaem_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_chunk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_height_chunk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stmfiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_gex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nhank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nfreq</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform forward modeling using the GAAEM method on a chunk of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>C_chunk</strong> (<em>numpy.ndarray</em>) – The chunk of data to be processed.</p></li>
+<li><p><strong>tx_height_chunk</strong> (<em>numpy.ndarray</em>) – The transmitter heights for this chunk.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em>) – The thickness of the model.</p></li>
+<li><p><strong>stmfiles</strong> (<em>list</em>) – A list of STM files.</p></li>
+<li><p><strong>file_gex</strong> (<em>str</em>) – The path to the GEX file.</p></li>
+<li><p><strong>Nhank</strong> (<em>int</em>) – The number of Hankel functions.</p></li>
+<li><p><strong>Nfreq</strong> (<em>int</em>) – The number of frequencies.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the forward modeling.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">get_process_handle_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return the number of handles used by the current process (Windows only)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">get_weight_from_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_well</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_well</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_dis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useLog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doPlot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate weights based on distance and data similarity to a reference point.</p>
+<p>This function computes three sets of weights:
+1. Combined weights based on both spatial distance and data similarity
+2. Distance-based weights
+3. Data similarity weights</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>f_data_h5<span class="classifier">str</span></dt><dd><p>Path to HDF5 file containing geometry and observed data</p>
+</dd>
+<dt>x_well<span class="classifier">float, optional</span></dt><dd><p>X coordinate of reference point (well), by default 0</p>
+</dd>
+<dt>y_well<span class="classifier">float, optional </span></dt><dd><p>Y coordinate of reference point (well), by default 0</p>
+</dd>
+<dt>i_ref<span class="classifier">int, optional</span></dt><dd><p>Index of reference point, by default -1 (auto-calculated as closest to x_well,y_well)</p>
+</dd>
+<dt>r_dis<span class="classifier">float, optional</span></dt><dd><p>Distance range parameter for spatial weighting, by default 400</p>
+</dd>
+<dt>r_data<span class="classifier">float, optional</span></dt><dd><p>Data similarity range parameter for data weighting, by default 2</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>tuple</dt><dd><p>(w_combined, w_dis, w_data) where:
+- w_combined: Combined weights from distance and data similarity
+- w_dis: Distance-based weights
+- w_data: Data similarity-based weights</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h2>Notes<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>The weights are calculated using Gaussian functions:
+- Distance weights use exp(-dis²/r_dis²)
+- Data weights use exp(-sum_dd²/r_data²)
+where dis is spatial distance and sum_dd is cumulative data difference</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">integrate_posterior_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">integrate_posterior_main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DATA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_use</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ncpu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_N_best</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">integrate_posterior_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POST.h5'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute posterior statistics for datasets in an HDF5 file.</p>
+<p>This function computes various statistics for datasets in an HDF5 file based on the posterior samples.
+The statistics include mean, median, standard deviation for continuous datasets, and mode, entropy, and class probabilities for discrete datasets.
+The computed statistics are stored in the same HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – The path to the HDF5 file to process.</p></li>
+<li><p><strong>usePrior</strong> (<em>bool</em>) – Flag indicating whether to use the prior samples. Default is False.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">integrate_rejection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'prior.h5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DAUGAAD_AVG_inout.h5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nchunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ncpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_N_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">integrate_rejection_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DATA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">2]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">integrate_update_prior_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Update the ‘is_discrete’ attribute of datasets in an HDF5 file.</p>
+<p>This function iterates over all datasets in the provided HDF5 file. 
+If a dataset’s name starts with ‘M’, the function checks if the dataset 
+has an ‘is_discrete’ attribute. If not, it checks if the dataset appears 
+to represent discrete data by sampling the first 1000 elements and checking 
+how many unique values there are. If there are fewer than 20 unique values, 
+it sets ‘is_discrete’ to 1; otherwise, it sets ‘is_discrete’ to 0. 
+The ‘is_discrete’ attribute is then added to the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>f_prior_h5</strong> (<em>str</em>) – The path to the HDF5 file to process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">is_notebook</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Check if the code is running in a Jupyter notebook or IPython shell.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if running in a Jupyter notebook or IPython shell, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">likelihood_gaussian_diagonal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_app</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute the Gaussian likelihood for a diagonal covariance matrix.
+This function calculates the likelihood of observed data <cite>d_obs</cite> given 
+a set of predicted data <cite>D</cite> and standard deviations <cite>d_std</cite> assuming 
+a Gaussian distribution with a diagonal covariance matrix.
+Parameters
+———-
+D : numpy.ndarray</p>
+<blockquote>
+<div><p>Predicted data array of shape (n_samples, n_features).</p>
+</div></blockquote>
+<dl class="simple">
+<dt>d_obs<span class="classifier">numpy.ndarray</span></dt><dd><p>Observed data array of shape (n_features,).</p>
+</dd>
+<dt>d_std<span class="classifier">numpy.ndarray</span></dt><dd><p>Standard deviation array of shape (n_features,).</p>
+</dd>
+</dl>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Likelihood array of shape (n_samples,).</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">likelihood_gaussian_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_app</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkNaN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useVectorized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate the Gaussian likelihood for a given dataset.
+Parameters
+———-
+D : numpy.ndarray</p>
+<blockquote>
+<div><p>The model predictions, with shape (n_samples, n_features).</p>
+</div></blockquote>
+<dl class="simple">
+<dt>d_obs<span class="classifier">numpy.ndarray</span></dt><dd><p>The observed data, with shape (n_features,).</p>
+</dd>
+<dt>Cd<span class="classifier">numpy.ndarray</span></dt><dd><p>The covariance matrix of the observed data, with shape (n_features, n_features).</p>
+</dd>
+<dt>checkNaN<span class="classifier">bool, optional</span></dt><dd><p>If True, the function will handle NaN values in <cite>d_obs</cite> by ignoring them in the calculations. 
+Default is True.</p>
+</dd>
+</dl>
+<section id="id7">
+<h2>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>The Gaussian likelihood for each sample, with shape (n_samples,).</p>
+</dd>
+<dt>TODO</dt><dd><p>We need to check that this works when D has NAN value.. (and Why does it ever?)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">likelihood_multinomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P_obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_is_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropyFilter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropyThreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.99</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate log-likelihood of multinomial distribution for discrete data.
+This function computes the log-likelihood of multinomial distribution for given 
+discrete data using direct indexing and optimized array operations.
+Parameters
+———-
+D : numpy.ndarray</p>
+<blockquote>
+<div><p>Matrix of observed discrete data with shape (N, n_features), where N is the
+number of samples and each element represents a class ID.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>P_obs<span class="classifier">numpy.ndarray</span></dt><dd><p>Matrix of probabilities with shape (n_classes, n_features), where each column
+represents probability distribution over classes for a feature.</p>
+</dd>
+<dt>class_id<span class="classifier">numpy.ndarray</span></dt><dd><p>Array of unique class IDs corresponding to rows in P_obs.
+If class=None, then the id class id’s are extracted from the unique values in D.</p>
+</dd>
+<dt>class_is_idx=False, optional</dt><dd><p>If True, class_id is already an index. 
+Default is False, and then the id is computed from the class_id array.</p>
+</dd>
+<dt>entropyFilter<span class="classifier">bool, optional</span></dt><dd><p>If True, applies entropy filtering to select features. Default is False.</p>
+</dd>
+<dt>entropyThreshold<span class="classifier">float, optional</span></dt><dd><p>Threshold value for entropy filtering, features with entropy below this value
+are selected. Default is 0.99.
+Log-likelihood values for each sample, shape (N,).</p>
+</dd>
+</dl>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Log-likelihood values for each sample, shape (N, 1).</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h2>Notes<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>The function:</dt><dd><ol class="arabic simple">
+<li><p>Creates a mapping from class IDs to indices</p></li>
+<li><p>Converts test data to corresponding indices</p></li>
+<li><p>Retrieves probabilities using advanced indexing</p></li>
+<li><p>Calculates log likelihood using max normalization for numerical stability</p></li>
+</ol>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_arr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Load data from an HDF5 file.
+Parameters
+———-
+f_data_h5 : str</p>
+<blockquote>
+<div><p>Path to the HDF5 file containing the data.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>id_arr<span class="classifier">list of int, optional</span></dt><dd><p>List of dataset IDs to load from the HDF5 file. Default is [1].</p>
+</dd>
+</dl>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl>
+<dt>dict</dt><dd><p>A dictionary containing the following keys:
+- ‘noise_model’: list of str</p>
+<blockquote>
+<div><p>Noise models for each dataset.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘d_obs’: list of numpy.ndarray</dt><dd><p>Observed data for each dataset.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘d_std’: list of numpy.ndarray or None</dt><dd><p>Standard deviation of the observed data for each dataset, if available.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘Cd’: list of numpy.ndarray or None</dt><dd><p>Covariance matrix for each dataset, if available.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘id_arr’: list of int</dt><dd><p>List of dataset IDs.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘i_use’: list of numpy.ndarray</dt><dd><p>Indicator array for each dataset.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘id_use’: list of int or numpy.ndarray</dt><dd><p>ID use array for each dataset.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h2>Notes<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>If ‘d_std’, ‘Cd’, ‘i_use’, or ‘id_use’ are not available in the HDF5 file for a given dataset,
+they will be set to None. If ‘id_use’ is not available, it will be set to the dataset ID.
+If ‘i_use’ is not available, it will be set to an array of ones with the same length as ‘d_obs’.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">load_prior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Randomize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Load prior data from an HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the prior HDF5 file.</p></li>
+<li><p><strong>N_use</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of samples to use. Default is 0, which means all samples.</p></li>
+<li><p><strong>idx</strong> (<em>list</em><em>, </em><em>optional</em>) – List of indices to use. If empty, all indices are used.</p></li>
+<li><p><strong>Randomize</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag indicating whether to randomize the order of the samples. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing the loaded prior data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">load_prior_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Randomize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">load_prior_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Randomize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Load prior model data from an HDF5 file.
+Parameters
+———-
+f_prior_h5 : str</p>
+<blockquote>
+<div><p>Path to the HDF5 file containing the prior model data.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>im_use<span class="classifier">list, optional</span></dt><dd><p>List of model indices to use. If empty, all models are used. Default is an empty list.</p>
+</dd>
+<dt>idx<span class="classifier">list, optional</span></dt><dd><p>List of indices to select from the data. If empty, indices are generated based on <cite>N_use</cite> and <cite>Randomize</cite>. Default is an empty list.</p>
+</dd>
+<dt>N_use<span class="classifier">int, optional</span></dt><dd><p>Number of samples to use. If 0, all samples are used. Default is 0.</p>
+</dd>
+<dt>Randomize<span class="classifier">bool, optional</span></dt><dd><p>If True, indices are randomized. If False, sequential indices are used. Default is False.</p>
+</dd>
+</dl>
+<section id="id12">
+<h2>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>M<span class="classifier">list of numpy.ndarray</span></dt><dd><p>List of arrays containing the selected data for each model.</p>
+</dd>
+<dt>idx<span class="classifier">numpy.ndarray</span></dt><dd><p>Array of indices used to select the data.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the length of <cite>idx</cite> is not equal to <cite>N_use</cite>.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">logl_T_est</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P_acc_lev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Estimate a temperature (T_est) based on a given logarithmic likelihood (logL), 
+a number (N_above), and an acceptance level (P_acc_lev).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logL</strong> (<em>numpy.ndarray</em>) – An array of logarithmic likelihoods.</p></li>
+<li><p><strong>N_above</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of elements above which to consider in the sorted logL array. Default is 10.</p></li>
+<li><p><strong>P_acc_lev</strong> (<em>float</em><em>, </em><em>optional</em>) – The acceptance level for the calculation. Default is 0.2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The estimated temperature. It’s either a positive number or infinity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p>note: The function sorts the logL array in ascending order after normalizing the data by subtracting the maximum value from each element.
+It then removes any NaN values from the sorted array.
+If the sorted array is not empty, it calculates T_est based on the N_above+1th last element in the sorted array and the natural logarithm of P_acc_lev.
+If the sorted array is empty, it sets T_est to infinity.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">lu_post_sample_logl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform LU post-sampling log-likelihood calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logL</strong> (<em>array-like</em>) – Array of log-likelihood values.</p></li>
+<li><p><strong>ns</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of samples to generate. Defaults to 1.</p></li>
+<li><p><strong>T</strong> (<em>float</em><em>, </em><em>optional</em>) – Temperature parameter. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the generated samples and the acceptance probabilities.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple
+- i_use_all (numpy darray): Array of indices of the selected samples.
+- P_acc (numpy array): Array of acceptance probabilities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">posterior_cumulative_thickness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usePrior</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate the posterior cumulative thickness based on the given inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the input h5 file.</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – Index of model parameter number, M[im].</p></li>
+<li><p><strong>icat</strong> (<em>list</em>) – List of category indices.</p></li>
+<li><p><strong>usePrior</strong> (<em>bool</em>) – Flag indicating whether to use prior.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>thick_mean (ndarray): Array of mean cumulative thickness.</p></li>
+<li><p>thick_median (ndarray): Array of median cumulative thickness.</p></li>
+<li><p>thick_std (ndarray): Array of standard deviation of cumulative thickness.</p></li>
+<li><p>class_out (list): List of class names.</p></li>
+<li><p>X (ndarray): Array of X values.</p></li>
+<li><p>Y (ndarray): Array of Y values.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">prior_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_in_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_forward_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doMakePriorCopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">prior_data_gaaem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_gex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doMakePriorCopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nhank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate prior data for the ga-aem method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the prior data file in HDF5 format.</p></li>
+<li><p><strong>file_gex</strong> (<em>str</em>) – Path to the file containing geophysical exploration data.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – Number of soundings to consider (default: 0).</p></li>
+<li><p><strong>doMakePriorCopy</strong> (<em>bool</em>) – Flag indicating whether to make a copy of the prior file (default: True).</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – Index of the model (default: 1).</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Index of the data (default: 1).</p></li>
+<li><p><strong>Nhank</strong> (<em>int</em>) – Number of Hankel transform quadrature points (default: 280).</p></li>
+<li><p><strong>Nfreq</strong> (<em>int</em>) – Number of frequencies (default: 12).</p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – Flag indicating whether multiprocessing is used (default: True).</p></li>
+<li><p><strong>Ncpu</strong> (<em>int</em>) – Number of cpus/threads used (default: 0 - all).</p></li>
+<li><p><strong>im_height</strong> (<em>int</em>) – Index of the model for height (default: 0).</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments.</p></li>
+<li><p><strong>Ncpu</strong> – Number of CPUs to use (default: 0-&gt;all).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filename of the HDF5 file containing the updated prior data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">prior_data_identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doMakePriorCopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate data D%id from model M%im in the prior file f_prior_h5 as an identity of M%im.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the prior data file in HDF5 format.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Index of the data (default: 0). if id=0, the next available data id is used</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – Index of the model (default: 1).</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – Number of soundings to consider (default: 0).</p></li>
+<li><p><strong>doMakePriorCopy</strong> (<em>bool</em>) – Flag indicating whether to make a copy of the prior file (default: False).</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">prior_model_layered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lay_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'log-uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_MEAN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a prior model with layered structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lay_dist</strong> (<em>str</em>) – Distribution of the number of layers. Options are ‘chi2’ and ‘uniform’. Default is ‘chi2’.</p></li>
+<li><p><strong>NLAY_min</strong> (<em>int</em>) – Minimum number of layers. Default is 3.</p></li>
+<li><p><strong>NLAY_max</strong> (<em>int</em>) – Maximum number of layers. Default is 6.</p></li>
+<li><p><strong>NLAY_deg</strong> (<em>int</em>) – Degrees of freedom for chi-square distribution. Only applicable if lay_dist is ‘chi2’. Default is 6.</p></li>
+<li><p><strong>RHO_dist</strong> (<em>str</em>) – Distribution of resistivity within each layer. Options are ‘log-uniform’, ‘uniform’, ‘normal’, and ‘lognormal’. Default is ‘log-uniform’.</p></li>
+<li><p><strong>RHO_min</strong> (<em>float</em>) – Minimum resistivity value. Default is 0.1.</p></li>
+<li><p><strong>RHO_max</strong> (<em>float</em>) – Maximum resistivity value. Default is 100.</p></li>
+<li><p><strong>RHO_MEAN</strong> (<em>float</em>) – Mean resistivity value. Only applicable if RHO_dist is ‘normal’ or ‘lognormal’. Default is 100.</p></li>
+<li><p><strong>RHO_std</strong> (<em>float</em>) – Standard deviation of resistivity value. Only applicable if RHO_dist is ‘normal’ or ‘lognormal’. Default is 80.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – Number of prior models to generate. Default is 100000.</p></li>
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the prior model file in HDF5 format. Default is ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filepath of the saved prior model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">prior_model_workbench</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lay_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlayers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'log-uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi2_deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a prior model with increasingly thick layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lay_dist</strong> (<em>str:param N: Number</em><em> of </em><em>prior models to generate. Default is 100000.</em>) – Distribution of the number of layers. Options are ‘chi2’ and ‘uniform’. Default is ‘chi2’.</p></li>
+<li><p><strong>RHO_dist</strong> (<em>str</em>) – Distribution of resistivity within each layer. Options are ‘log-uniform’, ‘uniform’, ‘normal’, ‘lognormal’, and ‘chi2’. Default is ‘log-uniform’.</p></li>
+<li><p><strong>z1</strong> (<em>float</em>) – Minimum depth value. Default is 0.</p></li>
+<li><p><strong>z2</strong> (<em>float</em>) – Maximum depth value. Default is 100.</p></li>
+<li><p><strong>nlayers</strong> (<em>int</em>) – Number of layers. Default is 30.</p></li>
+<li><p><strong>NLAY_min</strong> (<em>int</em>) – Minimum number of layers. Default is 3.</p></li>
+<li><p><strong>NLAY_max</strong> (<em>int</em>) – Maximum number of layers. Default is 6.</p></li>
+<li><p><strong>NLAY_deg</strong> (<em>int</em>) – Degrees of freedom for chi-square distribution. Only applicable if lay_dist is ‘chi2’. Default is 6.</p></li>
+<li><p><strong>p</strong> (<em>int</em>) – Power parameter for thickness increase. Default is 2.</p></li>
+<li><p><strong>RHO_min</strong> (<em>float</em>) – Minimum resistivity value. Default is 1.</p></li>
+<li><p><strong>RHO_max</strong> (<em>float</em>) – Maximum resistivity value. Default is 300.</p></li>
+<li><p><strong>RHO_mean</strong> (<em>float</em>) – Mean resistivity value. Only applicable if RHO_dist is ‘normal’ or ‘lognormal’. Default is 180.</p></li>
+<li><p><strong>RHO_std</strong> (<em>float</em>) – Standard deviation of resistivity value. Only applicable if RHO_dist is ‘normal’ or ‘lognormal’. Default is 80.</p></li>
+<li><p><strong>chi2_deg</strong> (<em>int</em>) – Degrees of freedom for chi2 distribution. Only applicable if RHO_dist is ‘chi2’. Default is 100.</p></li>
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the prior model file in HDF5 format. Default is ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filepath of the saved prior model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">prior_model_workbench_direct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'log-uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlayers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NLAY_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RHO_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi2_deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a prior model with increasingly thick layers.
+ALl models have the same number of layers!
+See also: prior_model_workbench</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<em>int</em>) – Number of prior models to generate. Default is 100000.</p></li>
+<li><p><strong>RHO_dist</strong> (<em>str</em>) – Distribution of resistivity within each layer. Options are ‘log-uniform’, ‘uniform’, ‘normal’, ‘lognormal’, and ‘chi2’. Default is ‘log-uniform’.</p></li>
+<li><p><strong>z1</strong> (<em>float</em>) – Minimum depth value. Default is 0.</p></li>
+<li><p><strong>z2</strong> (<em>float</em>) – Maximum depth value. Default is 100.</p></li>
+<li><p><strong>nlayers</strong> (<em>int</em>) – Number of layers. Default is 30.</p></li>
+<li><p><strong>p</strong> (<em>int</em>) – Power parameter for thickness increase. Default is 2.</p></li>
+<li><p><strong>RHO_min</strong> (<em>float</em>) – Minimum resistivity value. Default is 1.</p></li>
+<li><p><strong>RHO_max</strong> (<em>float</em>) – Maximum resistivity value. Default is 300.</p></li>
+<li><p><strong>RHO_mean</strong> (<em>float</em>) – Mean resistivity value. Only applicable if RHO_dist is ‘normal’ or ‘lognormal’. Default is 180.</p></li>
+<li><p><strong>RHO_std</strong> (<em>float</em>) – Standard deviation of resistivity value. Only applicable if RHO_dist is ‘normal’ or ‘lognormal’. Default is 80.</p></li>
+<li><p><strong>chi2_deg</strong> (<em>int</em>) – Degrees of freedom for chi2 distribution. Only applicable if RHO_dist is ‘chi2’. Default is 100.</p></li>
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the prior model file in HDF5 format. Default is ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filepath of the saved prior model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">reconstruct_shared_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared_memory_refs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reconstruct arrays from shared memory references.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">sample_from_posterior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tTEM-Djursland.h5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sample from the posterior distribution.</p>
+<p>Parameters:
+- is_ (int): Index of data f_data_h5.
+- d_sim (ndarray): Simulated data.
+- f_data_h5 (str): Filepath of the data file (default: ‘tTEM-Djursland.h5’).
+- N_use (int): Number of samples to use (default: 1000000).
+- autoT (int): Flag indicating whether to estimate temperature (default: 1).
+- ns (int): Number of samples to draw from the posterior (default: 400).</p>
+<p>Returns:
+- i_use (ndarray): Indices of the samples used.
+- T (float): Temperature.
+- EV (float): Expected value.
+- is_ (int): Index of the posterior sample.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">select_subset_for_inversion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_app</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a subset of indices for inversion based on the sum of absolute values.</p>
+<p>This function calculates the sum of absolute values along the specified axis
+for each row in the input array <cite>dd</cite>. It then selects the indices of the 
+<cite>N_app</cite> smallest sums.</p>
+<section id="id13">
+<h2>Parameters<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>dd<span class="classifier">numpy.ndarray</span></dt><dd><p>A 2D array of data from which to select the subset.</p>
+</dd>
+<dt>N_app<span class="classifier">int</span></dt><dd><p>The number of indices to select based on the smallest sums.</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h2>Returns<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>idx<span class="classifier">numpy.ndarray</span></dt><dd><p>An array of indices corresponding to the <cite>N_app</cite> smallest sums.</p>
+</dd>
+<dt>nsum<span class="classifier">numpy.ndarray</span></dt><dd><p>An array containing the sum of absolute values for each row in <cite>dd</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h2>Notes<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<p>This function uses <cite>np.nansum</cite> to ignore NaNs in the summation and 
+<cite>np.argpartition</cite> for efficient selection of the smallest sums.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">synthetic_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Wedge'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate synthetic geological models for different cases.
+Parameters
+———-
+case : str, optional</p>
+<blockquote>
+<div><p>The type of synthetic case to generate. Options are ‘Wedge’ and ‘3Layer’. Default is ‘Wedge’.</p>
+</div></blockquote>
+<dl>
+<dt><a href="#id16"><span class="problematic" id="id17">**</span></a>kwargs<span class="classifier">dict, optional</span></dt><dd><p>Additional parameters for the synthetic case generation.
+Common parameters:
+- showInfo : int, optional</p>
+<blockquote>
+<div><p>If greater than 0, print information about the generated case. Default is 0.</p>
+</div></blockquote>
+<p>Parameters for ‘Wedge’ case:
+- x_max : int, optional</p>
+<blockquote>
+<div><p>Maximum x-dimension size. Default is 1000.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>dx<span class="classifier">float, optional</span></dt><dd><p>Step size in the x-dimension. Default is 1000./x_max.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>z_max<span class="classifier">int, optional</span></dt><dd><p>Maximum z-dimension size. Default is 90.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>dz<span class="classifier">float, optional</span></dt><dd><p>Step size in the z-dimension. Default is 1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>z1<span class="classifier">float, optional</span></dt><dd><p>Depth at which the wedge starts. Default is z_max/10.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rho<span class="classifier">list of float, optional</span></dt><dd><p>Density values for different layers. Default is [100, 200, 120].</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>wedge_angle<span class="classifier">float, optional</span></dt><dd><p>Angle of the wedge in degrees. Default is 1.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Parameters for ‘3Layer’ case:
+- x_max : int, optional</p>
+<blockquote>
+<div><p>Maximum x-dimension size. Default is 100.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>x_range<span class="classifier">float, optional</span></dt><dd><p>Range in the x-dimension for the cosine function. Default is x_max/4.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>dx<span class="classifier">float, optional</span></dt><dd><p>Step size in the x-dimension. Default is 1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>z_max<span class="classifier">int, optional</span></dt><dd><p>Maximum z-dimension size. Default is 60.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>dz<span class="classifier">float, optional</span></dt><dd><p>Step size in the z-dimension. Default is 1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>z1<span class="classifier">float, optional</span></dt><dd><p>Depth at which the first layer ends. Default is z_max/3.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>z_thick<span class="classifier">float, optional</span></dt><dd><p>Thickness of the second layer. Default is z_max/2.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rho1_1<span class="classifier">float, optional</span></dt><dd><p>Density at the start of the first layer. Default is 120.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rho1_2<span class="classifier">float, optional</span></dt><dd><p>Density at the end of the first layer. Default is 10.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rho2_1<span class="classifier">float, optional</span></dt><dd><p>Density at the start of the second layer. Default is rho1_2.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rho2_2<span class="classifier">float, optional</span></dt><dd><p>Density at the end of the second layer. Default is rho1_1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rho3<span class="classifier">float, optional</span></dt><dd><p>Density of the third layer. Default is 120.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<section id="id18">
+<h2>Returns<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>M<span class="classifier">numpy.ndarray</span></dt><dd><p>The generated synthetic model.</p>
+</dd>
+<dt>x<span class="classifier">numpy.ndarray</span></dt><dd><p>The x-coordinates of the model.</p>
+</dd>
+<dt>z<span class="classifier">numpy.ndarray</span></dt><dd><p>The z-coordinates of the model.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate.</span></span><span class="sig-name descname"><span class="pre">use_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Determine if parallel processing can be used based on the environment.
+This function checks if the code is running in a Jupyter notebook or on a 
+POSIX system (e.g., Linux). If either condition is met, parallel processing 
+is considered OK. Otherwise, it is not recommended unless the primary script 
+is embedded in an <cite>if __name__ == “__main__”:</cite> block.
+:param kwargs: Additional keyword arguments.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>showInfo (int): If greater than 0, prints information about the 
+environment and parallel processing status. Default is 0.</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool: True if parallel processing is OK, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="integrate_plot.html" class="btn btn-neutral float-right" title="integrate_plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
