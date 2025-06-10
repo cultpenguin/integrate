@@ -1,0 +1,786 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data format &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Workflows" href="workflow.html" />
+    <link rel="prev" title="Getting started" href="gettingstarted.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-h5">DATA.h5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gaussian-noise-continuous-data">Gaussian noise  - continuous data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multinomial-noise-discrete-data">Multinomial noise - discrete data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prior">PRIOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forward-h5">FORWARD.h5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#post-f-post-h5">POST - <code class="samp docutils literal notranslate"><span class="pre">f_post_h5</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-typical-workflow">A typical workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules (documentation)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/format.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-format">
+<h1>Data format<a class="headerlink" href="#data-format" title="Link to this heading"></a></h1>
+<p>The <a class="reference external" href="https://www.hdfgroup.org/solutions/hdf5/">HDF5</a> file format is used as a container for all data in INTEGRATE.
+Each HDF5 file can contain multiple data sets (typically arranged in matrix format) with associated attributes that describe the data. <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDF View</a> is usefull to inspect the content of HDF5 files.</p>
+<p>The following HDF files are used for any INTEGRATE project</p>
+<p><strong>DATA.h5</strong> : Stores observed data, and its associated geometry.</p>
+<p><strong>PRIOR.h5</strong>: Stores realizations of the prior model, and corresponding forward response</p>
+<p><strong>FORWARD.h5</strong>: Stores information need to solved the forward, problem, and/or needed to describe the observed data in DATA.h5</p>
+<p><strong>POST.h5</strong>: stores index of posterior realizations, as well as posterior statistics</p>
+<section id="data-h5">
+<h2>DATA.h5<a class="headerlink" href="#data-h5" title="Link to this heading"></a></h2>
+<p>DATA.h5 contains observed data, and its associated geometry.
+The observed data can be of many types, such as TEM data and well-log data</p>
+<p>The ID of the observed data, must, for now, be the same as the ID of the prior data.
+Thus, the observed data in f_data:<code class="docutils literal notranslate"><span class="pre">D1/</span></code> must refer to the prior data in f_prior:<code class="docutils literal notranslate"><span class="pre">D1</span></code>.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Np</span></code>: Number of data locations (typically one set data per unique X-Y location)</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ndi</span></code>: Number of data points <code class="docutils literal notranslate"><span class="pre">Nd</span></code> per data type <code class="docutils literal notranslate"><span class="pre">i</span></code> per location.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Nclass</span></code>: Number of classes</p>
+</div></blockquote>
+<p>The datasets <code class="docutils literal notranslate"><span class="pre">UTMX</span></code>, <code class="docutils literal notranslate"><span class="pre">UTMY</span></code>, <code class="docutils literal notranslate"><span class="pre">ELEVATION</span></code>, and <code class="docutils literal notranslate"><span class="pre">LINE</span></code> are mandatory for most plotting routines in INTEGRATE,
+but are not used in the inversion itself.</p>
+<p>The attribute <code class="docutils literal notranslate"><span class="pre">D1/noise_model</span></code> is mandatory for all data types, and describes the noise model used for the data.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Data and attributes for DATA.h5</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/UTMX</p></td>
+<td><p>[Np,1]</p></td>
+<td></td>
+<td><p>(*)</p></td>
+<td><p>X - location of data points</p></td>
+</tr>
+<tr class="row-odd"><td><p>/UTMY</p></td>
+<td><p>[Np,1]</p></td>
+<td></td>
+<td><p>(*)</p></td>
+<td><p>Y - location of data points</p></td>
+</tr>
+<tr class="row-even"><td><p>/ELEVATION</p></td>
+<td><p>[Np,1]</p></td>
+<td></td>
+<td><p>(*)</p></td>
+<td><p>Elevation at data points</p></td>
+</tr>
+<tr class="row-odd"><td><p>/LINE</p></td>
+<td><p>[Np,1]</p></td>
+<td></td>
+<td><p>(*)</p></td>
+<td><p>Linenumber at data points</p></td>
+</tr>
+<tr class="row-even"><td><p>/D1/noise_model</p></td>
+<td><p>[string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>A string describing the noise model used for the data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D1/id_use</p></td>
+<td><p>[integer]</p></td>
+<td></td>
+<td></td>
+<td><p>The prior data if A string describing the noise model used for the data. If not set it will the same id as the data id</p></td>
+</tr>
+<tr class="row-even"><td><p>/D1/i_use</p></td>
+<td><p>[NP,1] int [0/1]</p></td>
+<td></td>
+<td></td>
+<td><p>Determines wether a data point should be used or not. All data are used by default</p></td>
+</tr>
+</tbody>
+</table>
+<p>The format of the observed data, and the associate uncertainty, depends on the type of data, and the choice of noise model.</p>
+<p>See the function <code class="xref py py-func docutils literal notranslate"><span class="pre">integrate.load_data()</span></code> for an example on how read DATA.h5 files.</p>
+<section id="gaussian-noise-continuous-data">
+<h3>Gaussian noise  - continuous data<a class="headerlink" href="#gaussian-noise-continuous-data" title="Link to this heading"></a></h3>
+<p>For continuous data and the multivariate Gaussian noise model can be chosen by setting the attribute <code class="docutils literal notranslate"><span class="pre">D1/noise_model=gaussian</span></code></p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Data and attributes om DATA.h5 for continuous data and multivariate Gaussian noise model</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/D1/noise_model</p></td>
+<td><p>[string]=’gaussian’</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>A string describing the noise model used for the data. Here <code class="docutils literal notranslate"><span class="pre">'gaussian'</span></code> to represent a multivariate Gaussian noise model.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D1/d_obs</p></td>
+<td><p>[Np,Nd1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Observed data (#1)</p></td>
+</tr>
+<tr class="row-even"><td><p>/D1/d_std</p></td>
+<td><p>[Np,Nd1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Standard deviation of observed data (db/dT). Is the size is [1,Nd], the same <code class="docutils literal notranslate"><span class="pre">d_std</span></code> is used for all data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D1/Ct</p></td>
+<td><p>[Nd1,Nd1]</p></td>
+<td></td>
+<td></td>
+<td><p>Correlated noise matrix. <code class="docutils literal notranslate"><span class="pre">Ct</span></code> is the same for all data</p></td>
+</tr>
+<tr class="row-even"><td><p>/D1/Ct</p></td>
+<td><p>[Np,Nd1,Nd1]</p></td>
+<td></td>
+<td></td>
+<td><p>Correlated noise matrix; each data observation has its own correlated noise matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p>/gatetimes</p></td>
+<td><p>[Ndata,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Gate times (in seconds) for each data point</p></td>
+</tr>
+<tr class="row-even"><td><p>/i_lm</p></td>
+<td><p>[Nlm,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Index (rel to /gatetimes) of Nlm gates for the low moment.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/i_hm</p></td>
+<td><p>[Nhm,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Index (rel to /gatetimes) of Nhm gates for the high moment.</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="multinomial-noise-discrete-data">
+<h3>Multinomial noise - discrete data<a class="headerlink" href="#multinomial-noise-discrete-data" title="Link to this heading"></a></h3>
+<p>For discrete data the multinomial distribution can use as likelihhood by setting the attribute <code class="docutils literal notranslate"><span class="pre">D1/noise_model=multinomial</span></code></p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Data and attributes om DATA.h5 for  data and multinomial noise model</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/D2/noise_model</p></td>
+<td><p>[string]=’multinomial’</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>The multinomial distribution is used as likelihood model for the data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D2/d_obs</p></td>
+<td><p>[Np,Nclass,Nm]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Observed data (class probabilities)</p></td>
+</tr>
+<tr class="row-even"><td><p>/D2/i_group</p></td>
+<td><p>[Np,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Indicates whether the Nd2 data should considered as groups or individually.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D2/i_use</p></td>
+<td><p>[Np,1]</p></td>
+<td></td>
+<td></td>
+<td><p>Binary indicator of whether a data point should be used or not</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="prior">
+<h2>PRIOR<a class="headerlink" href="#prior" title="Link to this heading"></a></h2>
+<p>PRIOR.h5 contains <code class="docutils literal notranslate"><span class="pre">N</span></code> realizations of a prior model (represented as potentially multiple types of model parameters, such as resistivity, lithology, grainsize,….), and corresponding data (consisting of potentially multiple types of data, such as tTEM, SkyTEM, WellData,..)</p>
+<p><code class="docutils literal notranslate"><span class="pre">N</span></code>: Number of realizations of the prior model</p>
+<p><code class="docutils literal notranslate"><span class="pre">Nm1</span></code>: Number of model parameters of type 1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Nm2</span></code>: Number of model parameters of type 2</p>
+<p><code class="docutils literal notranslate"><span class="pre">NmX</span></code>: Number of model parameters of type X</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">PRIOR model realizations in PRIOR.h5</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/M1</p></td>
+<td><p>[N,Nm1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>N realizations of model parameter 1,
+each consisting of Nm1 model param1eters</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/x</p></td>
+<td><p>[nm]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Array of values describing each value in M1 (e.g. depth to layer)</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/name</p></td>
+<td><p>[string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Name of model parameter /M1</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/is_discrete</p></td>
+<td><p>[nm]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>[0/1] described whether /M1 is a discrete or continuous parameter</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/class_id</p></td>
+<td><p>[1,n_class]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>A list of  <code class="docutils literal notranslate"><span class="pre">n_class</span></code> class id; only when case /M1/is_discrete=1.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/class_name</p></td>
+<td><p>[1,n_class]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>A list of <code class="docutils literal notranslate"><span class="pre">n_class</span></code> strings describing each class; only when case /M1/is_discrete=1.</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/clim</p></td>
+<td><p>[1,2]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Min and maximum value for colorbar</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/cmap</p></td>
+<td><p>[3,nlev]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Colormap with <code class="docutils literal notranslate"><span class="pre">nlev</span></code> levels.</p></td>
+</tr>
+<tr class="row-even"><td><p>/M2</p></td>
+<td><p>[N,Nm2]</p></td>
+<td></td>
+<td></td>
+<td><p>N realizations of model parameter 2,
+each consisting of Nm2 model parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>/Mx</p></td>
+<td><p>[N,NmX]</p></td>
+<td></td>
+<td></td>
+<td><p>N realizations of model parameter X,
+each consisting of NmX model parameters</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">prior data realizations in PRIOR.h5</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/D1</p></td>
+<td><p>[N,Nd1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>N realizations of data number 1,
+each consisting of <code class="docutils literal notranslate"><span class="pre">Nd</span></code> model parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D1/f5_forward</p></td>
+<td><p>[string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>HDF file describing the forward model used to compute prior data.</p></td>
+</tr>
+<tr class="row-even"><td><p>/D1/with_noise</p></td>
+<td><p>[1]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Indicates whether noise was added to the data[1] or not[0].</p></td>
+</tr>
+<tr class="row-odd"><td><p>/D2</p></td>
+<td><p>[N,Nd2]</p></td>
+<td></td>
+<td></td>
+<td><p>N realizations of data number 2,
+each consisting of <code class="docutils literal notranslate"><span class="pre">Nd2</span></code> model parameters</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">/D1</span></code> is only mandatory when PRIOR.h5 is used for inversion</p>
+<p>All the mandatory attributes specified for <code class="docutils literal notranslate"><span class="pre">/M1</span></code> are also mandatory for other attributes, i.e.  <code class="docutils literal notranslate"><span class="pre">/M1</span></code>,  <code class="docutils literal notranslate"><span class="pre">/M2</span></code>, … .</p>
+<p>f_forward_h5 [string]: Defines the name of the HDF5 file that contains information need to solved the forward problem…</p>
+</section>
+<section id="forward-h5">
+<h2>FORWARD.h5<a class="headerlink" href="#forward-h5" title="Link to this heading"></a></h2>
+<p>The FORWARD.h5 needs to hold’ as much information as needed to define the use fo a specific forward model.</p>
+<p>The attribute <code class="docutils literal notranslate"><span class="pre">/method</span></code> refer to a specific choice of forward method.</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">posterior data realizations in PRIOR.h5</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/method</p></td>
+<td><p>[string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Defines the type of forward model def:’TDEM’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/type</p></td>
+<td><p>[string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td></td>
+<td><p>Define the algorithm used to solve the forward model. def:’GA-AEM’.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">/method</span></code> can, for example, be <code class="docutils literal notranslate"><span class="pre">TDEM</span></code> for Time Domain EM (The default in INTEGRATE),
+ot can be <code class="docutils literal notranslate"><span class="pre">identity</span></code> for an identity mapping (useful to represent log data).</p>
+<p><code class="docutils literal notranslate"><span class="pre">/method='TDEM'</span></code> make use of time-domain EM forward modeling.
+The following three types of forward models will (eventually) be available:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/type='GA-AEM'</span></code> [DEFAULT].
+<a class="reference internal" href="references.html#ga-aem" id="id1"><span>[GA-AEM]</span></a>. Available for both Linux and Windows, Matlab and Python.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/type='AarhusInv'</span></code>.
+<span id="id2">[AarhusInv]</span>. Windows only.
+Not yet implemented</p>
+<p><code class="docutils literal notranslate"><span class="pre">/type='SimPEG'</span></code>.
+<span id="id3">[SimPEG]</span>. Python only.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/method='identity'</span></code> maps attributes of a specific model (realizations of the prior) directly into data.</p>
+</section>
+<section id="post-f-post-h5">
+<h2>POST - <code class="samp docutils literal notranslate"><span class="pre">f_post_h5</span></code><a class="headerlink" href="#post-f-post-h5" title="Link to this heading"></a></h2>
+<p>At the very minimum POST.h5 needs to contain the index (in PRIOR.h5) of realizations from the posterior</p>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Data and attributes in POST.h5</span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/i_use</p></td>
+<td><p>[N,Nr]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Index of posterior realizations for each data</p></td>
+</tr>
+<tr class="row-odd"><td><p>/T</p></td>
+<td><p>[N,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>The annealing temperature used for inversion</p></td>
+</tr>
+<tr class="row-even"><td><p>/EV</p></td>
+<td><p>[N,1]</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Evidence</p></td>
+</tr>
+<tr class="row-odd"><td><p>/f5_data</p></td>
+<td><p>F [string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Filename of HDF5 data file.</p></td>
+</tr>
+<tr class="row-even"><td><p>/f5_prior</p></td>
+<td><p>F [string]</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Filename of HDF5 PRIOR file.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For continuous model parameters the following generic posterior statistics are computed</p>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Data and attributes for continuous parameters in POST.h5</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/M1/Mean</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Point-wise mean of the posterior</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/Median</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Point-wise median of the posterior</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/Std</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Point-wise standard deviation of the posterior</p></td>
+</tr>
+</tbody>
+</table>
+<p>For discrete model parameters the following generic posterior statistics are computed</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text">Data and attributes for discrete parameters in POST.h5</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>attribute</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/M1/Mode</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Point-wise mode of the posterior</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/Entropy</p></td>
+<td><p>[N,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Point-wise entropy of the posterior</p></td>
+</tr>
+<tr class="row-even"><td><p>/M1/P</p></td>
+<td><p>[N,Nclass,Nm]</p></td>
+<td></td>
+<td></td>
+<td><p>Pointwise posterior probability of each class.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M1/M_N</p></td>
+<td><p>[N,Nclass]</p></td>
+<td></td>
+<td></td>
+<td><p>Median number of layers with specific class_id</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-typical-workflow">
+<h2>A typical workflow<a class="headerlink" href="#a-typical-workflow" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Setup DATA.h5</p>
+<ul class="simple">
+<li><p>Store the observed data and its associated uncertainty in DATA.h5</p></li>
+</ul>
+</li>
+<li><p>Setup FORWARD.h5</p>
+<ul class="simple">
+<li><p>Define the forward problem for data type A in FORWARD_A.h5.</p></li>
+<li><p>Define the forward problem for data type B in FORWARD_B.h5.</p></li>
+</ul>
+</li>
+<li><p>Setup PRIOR.h5</p>
+<ul class="simple">
+<li><p>Generate prior model realizations of model parameter 1 in in /M1</p></li>
+<li><p>Generate prior model realizations of model parameter 2 in in /M2</p></li>
+<li><p>Use FORWARD_A.h5 to compute prior data of the prior realizations for data type A</p></li>
+<li><p>Use FORWARD_A.h5 to compute prior data of the prior realizations for data type B</p></li>
+</ul>
+</li>
+<li><p>Sample the posterior and output POST.h5</p></li>
+<li><p>Update POST.h5 with some statistics computed from the posterior.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gettingstarted.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workflow.html" class="btn btn-neutral float-right" title="Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024,2025 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

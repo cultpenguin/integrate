@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INTEGRATE: Fast Probabilistic inversion of EM data using informed prior models &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules (documentation)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">INTEGRATE: Fast Probabilistic inversion of EM data using informed prior models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integrate-fast-probabilistic-inversion-of-em-data-using-informed-prior-models">
+<h1>INTEGRATE: Fast Probabilistic inversion of EM data using informed prior models<a class="headerlink" href="#integrate-fast-probabilistic-inversion-of-em-data-using-informed-prior-models" title="Link to this heading"></a></h1>
+<p>Last updated: Jun 10, 2025.</p>
+<p>INTEGRATE provides a python module and methods for fast probabilistic inversion of local information (e.g. electromagnetic data (EM), well log data, …) using informed prior models.</p>
+<p>The aim is to provide methods for the following tasks, that together represent a probabilistic workflow:</p>
+<dl>
+<dt>Prior modeling</dt><dd><p>Tools will be developed to quantify (through forward simulation) as much information as possible about the subsurface, such as the expected distribution of lithological layers and a model that links resistivity to lithology.
+See, for example, <a class="reference internal" href="references.html#madsen2023" id="id1"><span>[MADSEN2023]</span></a>.</p>
+</dd>
+<dt>Forward modeling</dt><dd><p>For each type of data considered a forward model must be available.</p>
+<p>For EM type data we consider using GA-AEM (<a class="reference external" href="https://github.com/GeoscienceAustralia/ga-aem">https://github.com/GeoscienceAustralia/ga-aem</a>), simPEG <span id="id2">[SimPEG]</span>, and AarhusInv <span id="id3">[AarhusInv]</span> as forward modeling engines.</p>
+</dd>
+<dt>Probabilistic Inversion</dt><dd><p>An implementation of the 1D probabilistic localized inversion using the <strong>Localized Rejection Sampler</strong> <a class="reference internal" href="references.html#hansen2021" id="id4"><span>[HANSEN2021]</span></a> and <strong>Machine Learning</strong> <a class="reference internal" href="references.html#hansenfinlay2022" id="id5"><span>[HANSENFINLAY2022]</span></a>.</p>
+<dl class="simple">
+<dt>Features</dt><dd><ul class="simple">
+<li><p>Fast probabilistic inversion with informed prior models</p></li>
+<li><p>Multiple Data Types</p></li>
+<li><p>Multiple Forward Models</p></li>
+<li><p>Joint inversion</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Analysis</dt><dd><p>Tools for visual illustrations of the results will be developed, such as 1D, 2D cross-sections, 3D rendering, as well as uncertainty quantification.</p>
+</dd>
+</dl>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>Refer to the documentation in <a class="reference internal" href="install.html"><span class="doc">Installation</span></a> for installation instructions.</p>
+<p>Examples of using the module can be found in the <a class="reference internal" href="notebooks.html"><span class="doc">Notebooks</span></a>.</p>
+</section>
+<section id="the-integrate-project">
+<h2>The INTEGRATE project<a class="headerlink" href="#the-integrate-project" title="Link to this heading"></a></h2>
+<p>The project is developed as part of the INTEGRATE project, where the goal is to develop probabilistic support tools that allow quantifying the potential for finding raw material resources close to where it is to be utilized.</p>
+<p>For more information, please visit the INTEGRATE website (<a class="reference external" href="https://integrate.nu/">https://integrate.nu/</a>).</p>
+</section>
+<section id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>The current development version is available through GitHub at
+<a class="reference external" href="https://github.com/cultpenguin/integrate_mockup/">https://github.com/cultpenguin/integrate_mockup/</a>.</p>
+</div></blockquote>
+</section>
+<section id="license-lgpl">
+<h2>License (LGPL)<a class="headerlink" href="#license-lgpl" title="Link to this heading"></a></h2>
+<p>This library is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or (at
+your option) any later version. This program is distributed in the hope
+that it will be useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for more details. You should
+have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59
+Temple Place - Suite 330, Boston, MA 02111-1307, USA.</p>
+</section>
+</section>
+<section id="the-manual">
+<h1>The manual<a class="headerlink" href="#the-manual" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#python-integrate-module">Python integrate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#forward-modeling">FORWARD MODELING</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#ga-aem-ga-aem">GA-AEM [GA-AEM]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#simpeg-python-only">SimPEG [Python only]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#aarhusinv-windows-only">AarhusInv [Windows only]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html#define-the-data">0. Define the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html#setup-a-prior-model">1. Setup a prior model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html#sample-the-posterior-distribution">2. Sample the posterior distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html#plot-statistic-from-the-posterior-distribution">3. Plot statistic from the posterior distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Data format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="format.html#data-h5">DATA.h5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="format.html#gaussian-noise-continuous-data">Gaussian noise  - continuous data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="format.html#multinomial-noise-discrete-data">Multinomial noise - discrete data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="format.html#prior">PRIOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="format.html#forward-h5">FORWARD.h5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="format.html#post-f-post-h5">POST - <code class="samp docutils literal notranslate"><span class="pre">f_post_h5</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="format.html#a-typical-workflow">A typical workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workflow.html#integrate-workflows-a-simple-resistivity-only-prior-ttem-data">INTEGRATE workflows - a simple (resistivity only) prior, tTEM data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/integrate_getting_started.html">Getting started with INTEGRATE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#noise">Noise</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#daugaard-case">Daugaard Case</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#synthetic-case">Synthetic Case</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#other">Other</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules (documentation)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/integrate.html">integrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/integrate_plot.html">integrate_plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/integrate_io.html">integrate_io</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024,2025 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

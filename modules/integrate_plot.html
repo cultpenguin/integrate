@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>integrate_plot &mdash; INTEGRATE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="integrate_io" href="integrate_io.html" />
+    <link rel="prev" title="integrate" href="integrate.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            INTEGRATE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules (documentation)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="integrate.html">integrate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">integrate_plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate_io.html">integrate_io</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">INTEGRATE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Modules (documentation)</a></li>
+      <li class="breadcrumb-item active">integrate_plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/integrate_plot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integrate-plot">
+<h1>integrate_plot<a class="headerlink" href="#integrate-plot" title="Link to this heading"></a></h1>
+<p>Functions for plotting in the INTEGRATE module.</p>
+<p>INTEGRATE Plotting Module - Visualization and Analysis Tools</p>
+<p>This module provides comprehensive visualization capabilities for the INTEGRATE
+geophysical data integration package. It creates publication-quality plots for
+data analysis, prior/posterior visualization, and results interpretation.</p>
+<dl class="simple">
+<dt>Key Features:</dt><dd><ul class="simple">
+<li><p>1D profile plots for layered earth models</p></li>
+<li><p>2D spatial mapping and interpolation</p></li>
+<li><p>Data-model comparison visualizations</p></li>
+<li><p>Statistical plots (uncertainty, probability maps)</p></li>
+<li><p>Geometry and survey layout visualization</p></li>
+<li><p>Customizable plotting styles and colormaps</p></li>
+</ul>
+</dd>
+<dt>Main Function Categories:</dt><dd><ul class="simple">
+<li><p>plot_profile_*(): 1D vertical profile plotting</p></li>
+<li><p>plot_data_*(): Observational data visualization</p></li>
+<li><p>plot_geometry(): Survey geometry and layout</p></li>
+<li><p>plot_feature_2d(): 2D spatial parameter mapping</p></li>
+<li><p>plot_T_EV(): Temperature and evidence visualization</p></li>
+<li><p>plot_*_stats(): Statistical analysis plots</p></li>
+</ul>
+</dd>
+<dt>Plot Types:</dt><dd><ul class="simple">
+<li><p>Discrete categorical models (geological units)</p></li>
+<li><p>Continuous parameter models (resistivity, conductivity)</p></li>
+<li><p>Uncertainty and probability distributions</p></li>
+<li><p>Data fit and residual analysis</p></li>
+<li><p>Cumulative thickness and property maps</p></li>
+</ul>
+</dd>
+<dt>Output Formats:</dt><dd><ul class="simple">
+<li><p>Interactive matplotlib figures</p></li>
+<li><p>High-resolution PNG/PDF export</p></li>
+<li><p>Customizable figure sizing and DPI</p></li>
+</ul>
+</dd>
+</dl>
+<p>Author: Thomas Mejer Hansen
+Email: <a class="reference external" href="mailto:tmeha&#37;&#52;&#48;geo&#46;au&#46;dk">tmeha<span>&#64;</span>geo<span>&#46;</span>au<span>&#46;</span>dk</a></p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">get_clim_cmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/M1'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Get the color limits and colormap for a given model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – Path to the HDF5 file containing the prior data.</p></li>
+<li><p><strong>Mstr</strong> (<em>str</em>) – Model string key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>clim, cmap – Color limits and colormap.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_T_EV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hardcopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot temperature and evidence field values from a given HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the HDF5 file.</p></li>
+<li><p><strong>i1</strong> (<em>int</em>) – Start index for the data to plot.</p></li>
+<li><p><strong>i2</strong> (<em>int</em>) – End index for the data to plot.</p></li>
+<li><p><strong>s</strong> (<em>int</em>) – Size of the scatter plot points.</p></li>
+<li><p><strong>T_min</strong> (<em>int</em>) – Minimum temperature value.</p></li>
+<li><p><strong>T_max</strong> (<em>int</em>) – Maximum temperature value.</p></li>
+<li><p><strong>pl</strong> (<em>str</em>) – Type of plot to generate (‘all’, ‘T’, ‘EV’, ‘ND’).</p></li>
+<li><p><strong>hardcopy</strong> (<em>bool</em>) – Whether to save the plot as a PNG file.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_cumulative_probability_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P_hypothesis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hardcopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cumulative_probability_profile'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the cumulative probability profile of different hypotheses.</p>
+<p>This function visualizes how the probability of different hypotheses accumulates
+over a sequence of data points, with each hypothesis represented as a colored
+area in a stacked plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P_hypothesis</strong> (<em>numpy.ndarray</em>) – A 2D array where each row represents a hypothesis and each column represents a data point. Values should be probabilities</p></li>
+<li><p><strong>i1</strong> (<em>int</em><em>, </em><em>optional</em>) – Starting index for the x-axis (data points)</p></li>
+<li><p><strong>i2</strong> (<em>int</em><em>, </em><em>optional</em>) – Ending index for the x-axis (data points). If 0, uses the number of data points in P_hypothesis</p></li>
+<li><p><strong>label</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – List of labels for each hypothesis. If None, generic labels will be created</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em> or </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – List of colors for each hypothesis. If None, colors from the ‘hot’ colormap will be used</p></li>
+<li><p><strong>hardcopy</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, saves the figure to a file</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Base name for the output file when hardcopy is True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None (displays the plot and optionally saves it to a file)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The plot shows how probabilities accumulate across hypotheses, with each hypothesis
+represented as a colored band. The total height of all bands at any x position equals 1.0
+(or the sum of probabilities for that data point).</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'imshow'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot observational data from an HDF5 file.</p>
+<p>This function creates visualizations of electromagnetic data including time-series plots,
+2D image displays, and other data representations. Supports multiple data types and
+plotting styles for comprehensive data analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_data_h5</strong> (<em>str</em>) – Path to the HDF5 file containing observational data</p></li>
+<li><p><strong>i_plot</strong> (<em>list</em><em> or </em><em>array-like</em><em>, </em><em>optional</em>) – Indices of data points to plot. If empty, plots all available data</p></li>
+<li><p><strong>Dkey</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>optional</em>) – Data keys/identifiers to plot. If empty, uses all available datasets</p></li>
+<li><p><strong>plType</strong> (<em>str</em><em>, </em><em>optional</em>) – Plotting method - ‘imshow’ for 2D image display, ‘plot’ for line plots</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional plotting arguments including hardcopy, figsize, colormap options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None (creates matplotlib plots)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function automatically handles different data formats and creates appropriate
+visualizations based on data dimensions and type. Supports saving plots to file
+when hardcopy=True is specified in kwargs.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_data_prior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'d_obs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the prior data on top of prior data realizations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_prior_data_h5</strong> (<em>str</em>) – Path to the HDF5 file containing the prior data.</p></li>
+<li><p><strong>f_data_h5</strong> (<em>str</em>) – Path to the HDF5 file containing the observed data.</p></li>
+<li><p><strong>nr</strong> (<em>int</em>) – Number of realizations to plot.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Data set ID.</p></li>
+<li><p><strong>id_data</strong> (<em>int</em><em> (</em><em>if not set</em><em>, </em><em>is_data is set to id</em><em>)</em>) – Data set ID for the observed data.</p></li>
+<li><p><strong>d_str</strong> (<em>str</em>) – Data string key.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Transparency level for the plot.</p></li>
+<li><p><strong>ylim</strong> (<em>tuple</em><em> or </em><em>list</em>) – Y-axis limits for the plot.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_data_prior_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the prior and posterior data for a given dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – The path to the post data file.</p></li>
+<li><p><strong>i_plot</strong> (<em>int</em>) – The index of the observation to plot.</p></li>
+<li><p><strong>nr</strong> (<em>int</em>) – Number of realizations to plot.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Data set ID.</p></li>
+<li><p><strong>Dkey</strong> (<em>str</em>) – String of the HDF5 key for the data set.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_data_xy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pl_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'line'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the XY geometry data from an HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_data_h5</strong> (<em>str</em>) – Path to the HDF5 file.</p></li>
+<li><p><strong>pl_type</strong> (<em>str</em>) – Type of plot to generate (‘line’, ‘elevation’, ‘all’).</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fig – The matplotlib figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_feature_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uselog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hardcopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot a 2D feature from a given HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the HDF5 file.</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Key of the feature to plot. If not provided, the first key found in the file will be used.</p></li>
+<li><p><strong>i1</strong> (<em>int</em>) – Start index of the feature to plot.</p></li>
+<li><p><strong>i2</strong> (<em>int</em>) – End index of the feature to plot.</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – Index of the feature.</p></li>
+<li><p><strong>iz</strong> (<em>int</em>) – Index of the z-coordinate.</p></li>
+<li><p><strong>uselog</strong> (<em>int</em>) – Flag indicating whether to apply logarithmic scaling to the data.</p></li>
+<li><p><strong>title_text</strong> (<em>str</em>) – Additional text to include in the plot title.</p></li>
+<li><p><strong>hardcopy</strong> (<em>bool</em>) – Whether to save the plot as a PNG file.</p></li>
+<li><p><strong>cmap</strong> (<em>list</em>) – Colormap to use for the plot.</p></li>
+<li><p><strong>clim</strong> (<em>list</em>) – Color limits for the plot.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments to be passed to the scatter plot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int – 1 if the plot is successful.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_data_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([],</span> <span class="pre">dtype=float64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hardcopy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots the geometry data from an INTEGRATE HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_data_h5</strong> (<em>str</em>) – Path to the HDF5 file containing the geometry data</p></li>
+<li><p><strong>i1</strong> (<em>int</em><em>, </em><em>optional</em>) – Starting index for the data to be plotted</p></li>
+<li><p><strong>i2</strong> (<em>int</em><em>, </em><em>optional</em>) – Ending index for the data to be plotted. If 0, uses the end of the data</p></li>
+<li><p><strong>ii</strong> (<em>numpy.ndarray</em><em>, </em><em>optional</em>) – Array of indices to be plotted. If empty, uses all indices between i1 and i2</p></li>
+<li><p><strong>s</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of the scatter plot points</p></li>
+<li><p><strong>pl</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of plot to generate. Options are <code class="docutils literal notranslate"><span class="pre">'all'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LINE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ELEVATION'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'id'</span></code></p></li>
+<li><p><strong>hardcopy</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, saves the plot as a PNG file</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional keyword arguments to pass to the scatter plot function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function generates scatter plots of the geometry data. If hardcopy is True, 
+the plots are saved as PNG files.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_posterior_cumulative_thickness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usePrior</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots the posterior cumulative thickness.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – The file path to the posterior data in HDF5 format.</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – The index of the image.</p></li>
+<li><p><strong>icat</strong> (<em>int</em><em> or </em><em>list</em>) – The index or list of indices of the categories.</p></li>
+<li><p><strong>property</strong> (<em>str</em>) – The property to plot (‘median’, ‘mean’, ‘std’, ‘relstd’).</p></li>
+<li><p><strong>usePrior</strong> (<em>bool</em>) – Whether to use prior data.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fig – The matplotlib figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_prior_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_prior_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the prior statistics for a given dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_prior_h5</strong> (<em>str</em>) – The path to the prior data file.</p></li>
+<li><p><strong>Mkey</strong> (<em>str</em><em> or </em><em>list</em>) – Key of the model to plot.</p></li>
+<li><p><strong>nr</strong> (<em>int</em>) – Number of realizations to plot.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot 1D profiles from posterior sampling results.</p>
+<p>This function creates vertical profile plots showing the posterior distribution
+of model parameters as a function of depth or model layer. Automatically
+detects model type (discrete or continuous) and calls appropriate plotting function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the HDF5 file containing posterior sampling results</p></li>
+<li><p><strong>i1</strong> (<em>int</em><em>, </em><em>optional</em>) – Starting index for the data points to plot (1-based indexing)</p></li>
+<li><p><strong>i2</strong> (<em>int</em><em>, </em><em>optional</em>) – Ending index for the data points to plot (1-based indexing)</p></li>
+<li><p><strong>im</strong> (<em>int</em><em>, </em><em>optional</em>) – Model identifier to plot. If 0, automatically detects and plots all models</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional plotting arguments passed to discrete/continuous plotting functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None (creates matplotlib plots)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function automatically computes posterior statistics if not present in the file.
+For discrete models, calls plot_profile_discrete(). For continuous models,
+calls plot_profile_continuous().</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_profile_continuous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot continuous profiles from a given HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the HDF5 file.</p></li>
+<li><p><strong>i1</strong> (<em>int</em>) – Starting index for the profile.</p></li>
+<li><p><strong>i2</strong> (<em>int</em>) – Ending index for the profile.</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – Index of the profile to plot.</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – ‘Mean’m or ‘Median’[def] profile</p></li>
+<li><p><strong>alpha</strong> (<em>float
+:type alpha: float</em>) – Set the transparency realtove to the STD values. alpha=0 means no transparency, alpha=.8 means full transparency when std&gt;0.8.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">integrate_plot.</span></span><span class="sig-name descname"><span class="pre">plot_profile_discrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_post_h5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot discrete profiles from a given HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f_post_h5</strong> (<em>str</em>) – Path to the HDF5 file.</p></li>
+<li><p><strong>i1</strong> (<em>int</em>) – Starting index for the profile.</p></li>
+<li><p><strong>i2</strong> (<em>int</em>) – Ending index for the profile.</p></li>
+<li><p><strong>im</strong> (<em>int</em>) – Index of the profile to plot.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="integrate.html" class="btn btn-neutral float-left" title="integrate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="integrate_io.html" class="btn btn-neutral float-right" title="integrate_io" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,2024,2025 INTEGRATE WORKING GROUP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
