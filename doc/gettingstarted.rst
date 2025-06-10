@@ -75,6 +75,7 @@ Getting started
 
 
 :: 
+
     # Plot posterior probability of cumulative thickness of discrete parameter
     ig.plot_posterior_cumulative_thickness(f_post_h5,im=2, icat=[2]], property='median')
 

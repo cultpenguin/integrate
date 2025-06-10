@@ -5,10 +5,11 @@ Installation
 Python integrate module
 =======================
 
-Once a stable version is released, the module will be available on PyPI (), and it should be installed using 
+Once a stable version is released, the module will be available on PyPI (https://test.pypi.org/project/integrate/), and it should be installed using 
 ::
     
-        pip install integrate_module
+        # pip install integrate_module
+        pip install -i https://test.pypi.org/simple/ integrate
 
 Until then, the module can be installed from the source code. 
 The following steps will install the module, optionally in a virtual environment called 'integrate'
@@ -29,12 +30,9 @@ The following steps will install the module, optionally in a virtual environment
         pip install --upgrade -r requirements.txt
         pip install .
 
-This allows working with the examples (:doc:`notebooks`) that does not require EM forward modeling.
-
 
 FORWARD MODELING
 ================
-
 
 GA-AEM [GA-AEM]
 ---------------
@@ -42,10 +40,21 @@ GA-AEM can be downloaded from [https://github.com/GeoscienceAustralia/ga-aem].
 
 **On Windows:** 
 
-You need to add `path_to_ga-aem/third_party/fftw3.2.2.dlls/64bit/` to the Windows path `$PATH` under
+The forward EM codes from GA-AEM should be installed automatically on Windows when installing the `integrate_module` package, but if you want to install it separately, you can run the following command:
+
+GA-AEM can be installed using on Windows using 
+::
+
+    pip install ga-aem-forward-win
+
+
+
+if you install it manually, for the GA-AEM source code, you need to:
+
+A: Add `path_to_ga-aem/third_party/fftw3.2.2.dlls/64bit/` to the Windows path `$PATH` under
 environment variables. 
 
-Then add `path_to_ga-aem/matlab/gatdaem1d_functions/` and `path_to_ga-aem/matlab/bin/x64/` to the Matlab path
+B: add `path_to_ga-aem/matlab/gatdaem1d_functions/` and `path_to_ga-aem/matlab/bin/x64/` to the Matlab path
 ::
 
     addpath path_to_ga-aem/matlab/gatdaem1d_functions/
